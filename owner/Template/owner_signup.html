@@ -1,0 +1,83 @@
+{% extends "o_header-footer.html" %}
+{% load static %}
+<!--============== Signup Form Start ==============-->
+{% block content %}
+<div class="full-row" style="background-image: url('/static/assets/images/background/pg.jpg');">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-5 mx-auto">
+                <div class="bg-white xs-p-20 p-30 border rounded">
+                    <h4 class="mb-4 down-line">Registration</h4>
+                    <div class="form-icon-left form-boder">
+                        <form action="/owner/signup/" method="POST" data-parsley-validate="">
+                            {% csrf_token %}
+                            <div class="row row-cols-1 g-3">
+                                <div class="col">
+                                    <label class="mb-2"><b>First Name</b></label>
+                                    <input type="text" class="form-control bg-light" value="" required=""
+                                        name="owner_first_name" data-parsley-required="true" data-parsley-required-message="This field is required" data-parsley-pattern="^[a-zA-Z ]+$" data-parsley-pattern-message="Please enter valid First name">
+                                </div>
+                                <div class="col">
+                                    <label class="mb-2"><b>Last Name</b></label>
+                                    <input type="text" class="form-control bg-light" value="" required=""
+                                        name="owner_last_name" data-parsley-required="true" data-parsley-required-message="This field is required" data-parsley-pattern="^[a-zA-Z ]+$" data-parsley-pattern-message="Please enter valid Last name">
+                                </div>
+                                <div class="col">
+                                    <label class="mb-2"><b>Contact No.</b></label>
+                                    <input type="number" class="form-control bg-light" value="" required=""
+                                        name="owner_contact_no" data-parsley-required="true" data-parsley-required-message="This field is required" data-parsley-pattern="^[0-9]+$" data-parsley-maxlength="13" data-parsley-minlength="10">
+                                </div>
+                                <div class="col">
+                                    <label class="mb-2"><b>Email Address</b></label>
+                                    <input type="email" class="form-control bg-light" value="" required=""
+                                        name="owner_email_id"  data-parsley-required="true" data-parsley-required-message="This field is required" data-parsley-pattern="^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$" data-parsley-pattern-message="Please enter valid email id">
+                                </div>
+                            
+                                <div class="col">
+                                    <label class="mb-2"><b>Address</b></label>
+                                    <input type="text" class="form-control bg-light" value="" required=""
+                                        name="owner_address" data-parsley-required="true" data-parsley-required-message="This field is required">
+                                </div>
+                                <div class="col">
+                                    <label class="mb-2"><b>Gender</b></label><br>
+                                    &nbsp; &nbsp; &nbsp;<label class="mb-2">Male</label>
+                                    <input type="radio" value="M" required="" name="owner_gender">
+                                    &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<label class="mb-2">Female</label>
+                                    <input type="radio" value="F" required="" name="owner_gender">
+                                </div>
+                                <div class="col">
+                                    <label class="mb-2"><b>Password</b></label>
+                                    <input type="password" class="form-control bg-light" value="" required=""
+                                        name="owner_password" data-parsley-required="true" data-parsley-required-message="This field is required" data-parsley-pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,}" data-parsley-pattern-message="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters">
+                                </div>
+                                
+                                <div class="col">
+                                    <!-- <label class="mb-2">Password</label> -->
+                                    <input type="hidden" class="form-control bg-light" value="0" required=""
+                                        name="otp_used">
+                                </div>
+
+                                <div class="col">
+                                    <div class="custom-check-box-2">
+                                        <input class="d-none" type="checkbox" value="" id="defaultCheck1">
+                                        <label for="defaultCheck1">Accept Terms and Conditions</label>
+                                    </div>
+                                </div>
+                                <div class="col">
+                                    <button type="submit" class="btn btn-primary mb-3">Sign Up Now</button>
+                                </div>
+                                <div class="col">
+                                    <a href="#" class="btn-link text-dark">View Terms and Condition</a>
+                                    <a href="signin.html" class="text-dark d-table py-1"><u>I already have
+                                            account.</u></a>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!--============== Signup Form End ==============-->
+{% endblock %}

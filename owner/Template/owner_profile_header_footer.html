@@ -1,0 +1,174 @@
+<!doctype html>
+<html lang="en">
+{% load static %}
+
+<!-- Mirrored from template.unicoderbd.com/uniland/fullwidth/dashboard-listing.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 07 Dec 2023 04:22:41 GMT -->
+<head>
+    <!-- Meta Tag -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Uniland - Real Estate HTML5 Template">
+    <meta name="keywords" content="real estate, property, property search, agent, apartments, booking, business, idx, housing, real estate agency, rental">
+    <meta name="author" content="unicoder">
+    <title>Newo Living Rent A PG</title>
+    <!-- Favicon -->
+    <link rel="shortcut icon" href="{% static 'assets/images/favicon.ico' %}">
+
+    <!-- Google Font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com/">
+    <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Sen:wght@400;700&amp;display=swap" rel="stylesheet">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com/">
+    <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Barlow:ital,wght@0,300;0,400;0,500;0,700;1,400&amp;display=swap" rel="stylesheet">
+
+
+    <!-- Required style of the theme -->
+    <link rel="stylesheet" href="{% static 'assets/css/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/bootstrap-select.min.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/all.min.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/animate.min.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/webfonts/flaticon/flaticon.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/owl.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/jquery.fancybox.min.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/layerslider.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/template.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/style.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/colors/color.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/loader.css' %}">
+</head>
+
+<body>
+
+    <div class="preloader">
+		<div class="loader xy-center"></div>
+	</div>
+
+    <div id="page_wrapper" class="bg-light vh-100">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-md-4 col-lg-3 col-xl-2 px-0">
+                    <div class="dashboard-nav-area bg-secondary pt-4">
+                        <a class="navbar-brand d-table px-40 py-3 mb-3" href="index.html"><img src="{% static 'assets/images/logo/hsplogo.jpg' %}" style="height: 120px; width: 180px;" alt="dashboard logo"></a>
+                        <div class="collaps-dashboard m-3 px-3 rounded bg-white text-secondary clearfix d-md-none">
+                            <span>Open Dashboard Navigation</span>
+                            <span class="flaticon-menu text-secondary flat-mini float-end"></span>
+                        </div>
+                        <nav class="dashboard-nav nav-light pb-3" id="navbarSupportedContent">
+                            <ul class="navbar-nav left-collaps-nav">
+                                <li class="text-white pb-2 pt-4 px-20">Overview</li>
+                           
+                                <li class="nav-item">
+                                    <a class="nav-link" href="/owner/owner_cate/"><i class="flaticon-layers flat-mini pe-2"></i> Category</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="/owner/owner_area/"><i class="flaticon-layers flat-mini pe-2"></i> Area</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="/owner/owner_room/"><i class="flaticon-layers flat-mini pe-2"></i> Room Type</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="/owner/owner_facility/"><i class="flaticon-layers flat-mini pe-2"></i>Facility</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="/owner/pg_details/"><i class="flaticon-email flat-mini pe-2"></i> PG Details</a>
+                                </li>
+                                
+                                <li class="nav-item">
+                                    <a class="nav-link" href="/owner/owner_report1/"><i class="flaticon-email flat-mini pe-2"></i> Report 1 </a>
+                                </li>
+
+                            
+                                
+                           
+                                <li class="nav-item">
+                                    <a class="nav-link" href="/owner/submitpg/"><i class="flaticon-arrow flat-mini pe-2"></i>Submit PG's</a>
+                                </li>
+                               
+                                
+                                
+                               
+                                
+                           
+                            </ul>
+                        </nav>
+                    </div>
+                </div>
+
+                <div class="col-md-8 col-lg-9 col-xl-10 px-0 dashboard-body" style="height: 100vh; overflow-y: scroll;">
+                    <!--============== Header Section Start ==============-->
+                    <header class="header-unfix border-bottom bg-white">
+                        <div class="main-nav xs-p-0">
+                            <div class="container-fluid">
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <nav class="navbar navbar-expand-lg nav-secondary nav-primary-hover nav-line-active px-3">
+                                            <div class="navbar-collapse justify-content-between sm-ml-0">
+                                                <ul class="navbar-nav sm-mx-none">
+                                                    <li class="nav-item dropdown">
+                                                        <a class="nav-link dropdown-toggle" href="blog-grid-classic.html">Owner Login</a>
+                                                        
+                                                    </li>
+                                              
+                                                </ul>
+                                                <ul class="navbar-nav user-option">
+                                                    {% if 'o_id' in request.session %}
+                                                    <li class="nav-item">
+                                                        <a class="nav-link" href="/owner/edit_profile/">Edit Profile</a>
+                                                    </li>
+                                                    <li class="nav-item">
+                                                        <a class="btn btn-primary add-listing-btn" href="/owner/owner_signout/">Logout</a>
+                                                    </li>
+                                                    {% else %}
+                                                    <li class="nav-item">
+                                                        <a class="btn btn-primary add-listing-btn" href="/owner/owner_signin/">Login</a>
+                                                    </li>
+                                                    {% endif %}
+                                                </ul>
+                                            </div>
+                                        </nav>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </header>
+                    <!--============== Header Section End ==============-->
+                    {% block content %}
+                    {% endblock %}
+                    <!-- Footre -->
+                    <div class="full-row pt-0 pb-5">
+                        <div class="container-fluid">
+                            <div class="row">
+                                <div class="col-12 text-center"><span>© 2024 Newo Living All right reserved</span></div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- Javascript Files -->
+    <script src="{% static 'assets/js/jquery.min.js' %}"></script>
+    <script src="{% static 'assets/js/popper.min.js' %}"></script>
+    <script src="{% static 'assets/js/bootstrap.min.js' %}"></script>
+    <script src="{% static 'assets/js/bootstrap-select.min.js' %}"></script>
+    <script src="{% static 'assets/js/jquery.fancybox.min.js' %}"></script>
+    <script src="{% static 'assets/js/owl.js' %}"></script>
+    <script src="{% static 'assets/js/range/tmpl.js' %}"></script>
+    <script src="{% static 'assets/js/range/jquery.dependClass.js' %}"></script>
+    <script src="{% static 'assets/js/range/draggable.js' %}"></script>
+    <script src="{% static 'assets/js/range/jquery.slider.js' %}"></script>
+    <script src="{% static 'assets/js/wow.js' %}"></script>
+    <script src="{% static 'assets/js/mixitup.min.js' %}"></script>
+    <script src="{% static 'assets/js/custom.js' %}"></script>
+
+</body>
+
+
+<!-- Mirrored from template.unicoderbd.com/uniland/fullwidth/dashboard-listing.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 07 Dec 2023 04:22:41 GMT -->
+</html>

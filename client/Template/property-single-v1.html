@@ -1,0 +1,313 @@
+{% extends "c_header-footer.html" %}
+{% load static %}
+<!--============== Page title Start ==============-->
+{% block content %}
+<div class="full-row py-5">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <nav aria-label="breadcrumb" class="mb-2">
+                    <ol class="breadcrumb mb-0 bg-transparent p-0">
+                        <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+                        <li class="breadcrumb-item"><a href="#">Property</a></li>
+                        <li class="breadcrumb-item active text-primary" aria-current="page"></li>
+                    </ol>
+                </nav>
+                <h3 class="text-secondary">{{full.pg_name}}</h3>
+            </div>
+        </div>
+    </div>
+</div>
+<!--============== Page title End ==============-->
+
+<!--============== Property Slider Start ==============-->
+<div class="full-row p-0">
+    <div class="container">
+        <div class="row" style="background-image: url('/static/images/{{full.pg_image}}'); background-position: center;background-size: cover; ">
+            <div class="col-md-12">
+                <div id="single-property" style="width:1200px; height:600px; margin:0 auto 30px;">
+                    <!-- Slide 1-->
+                    <div class="ls-slide" data-ls="duration:7500; transition2d:5; kenburnszoom:in; kenburnsscale:1.2;" >
+                        <img width="1920" height="1280" src="{% static 'assets/images/slider/5.png' %}" class="ls-bg"
+                            alt=""/> </div>
+
+                    <!-- Slide 2-->
+                    <div class="ls-slide" data-ls="duration:7500; transition2d:5; kenburnszoom:out; kenburnsscale:1.2;">
+                        <img width="1920" height="1280" src="{% static 'assets/images/slider/6.png' %}" class="ls-bg"
+                            alt="" /> </div>
+
+                    <!-- Slide 3-->
+                    <div class="ls-slide" data-ls="duration:7500; transition2d:5; kenburnszoom:in; kenburnsscale:1.2;">
+                        <img width="1920" height="1280" src="{% static 'assets/images/slider/8.png' %}" class="ls-bg"
+                            alt="" /> </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!--============== Property Slider End ==============-->
+
+<!--============== Property Details Start ==============-->
+<div class="full-row pt-30">
+    <div class="container">
+        <div class="row">
+            <div class="col-xl-4 order-xl-2">
+                <!-- Message Form -->
+                <div class="widget widget_contact bg-white border p-30 shadow-one rounded mb-30">
+                    <h5 class="mb-4">Listed By</h5>
+                    <div class="media mb-3">
+                        <img class="rounded-circle me-3" src="{% static 'assets/images/logo/ownerlogo1.png' %}" alt="avata" style="height: 40px;">
+                        
+                        <div class="media-body">
+                            <div class="h6 mt-0">{{full.owner_id.owner_first_name}}&nbsp;{{full.owner_id.owner_last_name}}</div>
+                            <!-- <span>{{full.owner_id.owner_email_id}}</span><br>
+                            <span>{{full.owner_id.owner_contact_no}}</span> -->
+                        </div>
+                        
+                    </div>
+                    <form class="quick-search form-icon-right" action="/client/inquiry/" method="POST" data-parsley-validate="">
+                        {% csrf_token %}
+                        <div class="form-row">
+                            <!-- <div class="col-12 mb-10">
+                                <div class="form-group mb-0">
+                                    <input type="text" class="form-control" name="user_name" placeholder="Your Name">
+                                </div>
+                            </div> -->
+                            <div class="col-12 mb-10">
+                                <div class="form-group mb-0">
+                                    <input type="number" class="form-control" name="contact_no" placeholder="Phone Number" data-parsley-required="true" data-parsley-required-message="This field is required" data-parsley-pattern="^[0-9]+$" data-parsley-maxlength="13" data-parsley-minlength="10">
+                                </div>
+                            </div>
+                            <div class="col-12 mb-10">
+                                <div class="form-group mb-0">
+                                    <input type="email" class="form-control" name="email_id" placeholder="Your Email" data-parsley-required="true" data-parsley-required-message="This field is required" data-parsley-required-message="This field is required" data-parsley-pattern="^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$" data-parsley-pattern-message="Please enter valid email id">
+                                </div>
+                            </div>
+                            <div class="col-12 mb-10">
+                                <div class="form-group mb-0">
+                                    <textarea class="form-control" name="u_message" placeholder="Message"
+                                        rows="10" data-parsley-required="true" data-parsley-required-message="This field is required"></textarea>
+                                </div>
+                            </div>
+                            <div class="col-12">
+                                <div class="form-group mb-0">
+                                    <button type="submit" class="btn btn-primary w-100">Send Message</button>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <!-- Property Search -->
+                
+               
+   <!--============== Recent Property Widget Start ==============-->
+   <div class="widget widget_recent_property">
+    <h5 class="text-secondary mb-4">Images</h5>
+    
+    <ul>
+        {% for data in gallery %}
+        <li>
+            <img src="{% static '/images/' %}{{data.image}}" alt="" style="height: 100px; ">
+         
+        </li>
+        {% endfor %}
+    </ul>
+    
+</div>
+<!--============== Recent Property Widget End ==============-->
+            </div>
+            <div class="col-xl-8 order-xl-1">
+                <div class="property-overview border summary rounded bg-white p-30 mb-30">
+                    <div class="row mb-4">
+                        <div class="col-auto">
+                           
+                            <h4 class="listing-title"><a href="property-single-v1.html"></a></h4>
+                            <span class="listing-location"><b><i
+                                    class="fas fa-map-marker-alt text-primary"></i>&nbsp;{{full.pg_address}}</span></b>
+                            <a href="#" class="d-block text-light hover-text-primary font-small mb-2">( 100 People
+                                Recommended )</a>
+                        </div>
+        
+                        <div class="col-12">
+                            <div class="product-offers mt-2">
+                                <ul class="product-offers-list">
+                                    <li class="product-offer-item"> <strong>Special Price </strong>Get extra 19% off
+                                        (price inclusive of discount)</li>
+                                    <li class="product-offer-item"> <strong>Bank Offer </strong> 10% instant discount on
+                                        VISA Cards</li>
+                                    <li class="product-offer-item"> <strong>No cost EMI ₹499/month.</strong> Standard EMI
+                                        also available</li>
+                                </ul>
+                            </div>
+                            <ul class="quick-meta mt-4">
+                                
+                                <li class="bg-light"><form action="/client/add_wishlist/" method="POST">
+                                    {% csrf_token %}
+                                    <input type="hidden" name="pg_id" value="{{full.pg_id}}">
+                                    <button type="submit"  class="flaticon-like-1 flat-mini" title="Add wishlist"></button>
+                                </form></li>
+
+                                <li class="bg-primary w-auto"><a href="/client/bookpg/{{full.pg_id}}" class="px-5 text-white">Booking Now</a></li>
+                              
+                            </ul>
+
+                            <hr>
+                    
+                        </div>
+                    </div>
+                    <div class="row row-cols-1">
+                        <div class="col">
+                            <h5 class="mb-3">Description</h5>
+                            <p>{{full.pg_desc}}</p>
+                           
+                        </div>
+                    </div>
+                </div>
+              
+                <div class="property-overview border rounded bg-white p-30 mb-30">
+                    <div class="row row-cols-1">
+                        <div class="col">
+                            <h5 class="mb-3">Package Summary</h5>
+                            <div class="table-striped overflow-x-scroll pb-2">
+                                <table class="w-100">
+                                    
+                                    <tbody>
+                                        <tr>
+                                            <th>Package name</th>
+                                            <th>Pack Price  </th>
+                                            <th>Package Description </th>
+                                            <th>Package Months </th>
+                                            
+                                            <!-- <td>Listing Type :</td>
+                                            <td>For Sale</td> -->
+                                        </tr>
+                                        {% for data in pack %}
+                                        <tr>
+                                            <td>{{data.pack_name}}</td>
+                                            <td>{{data.pack_price}}₹</td>
+                                            <td>{{data.pack_desc}}</td>
+                                            <td>{{data.pack_month}}</td>
+                                            <!-- <td>Current Owner :</td>
+                                            <td>Green Developers LTD</td> -->
+                                        </tr>
+                                        {% endfor %}
+                                     
+                                    </tbody>
+                                   
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="property-overview border rounded bg-white p-30 mb-30">
+                    <div class="row row-cols-1">
+                        <div class="col">
+                            <h5 class="mb-3">Room Information</h5>
+                            <div class="table-striped overflow-x-scroll pb-2">
+                                <table class="w-100">
+                                    
+                                    <tbody>
+                                        <tr>
+                                            <th>Room Type</th>
+                                            <th>Number Of Rooms</th>
+                                           
+                                            
+                                            <!-- <td>Listing Type :</td>
+                                            <td>For Sale</td> -->
+                                        </tr>
+                                        {% for data in pgr %}
+                                        <tr>
+                                            <td>{{data.room_type_id.room_type_name}}</td>
+                                            <td>{{data.num_of_rooms}}</td>
+                                         
+                                            <!-- <td>Current Owner :</td>
+                                            <td>Green Developers LTD</td> -->
+                                        </tr>
+                                        {% endfor %}
+                                     
+                                    </tbody>
+                                   
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="property-overview border rounded bg-white p-30 mb-30">
+                    <div class="row row-cols-1">
+                        <div class="col">
+                            <h5 class="mb-3">PG Facility's</h5>
+                            {% for data in pgf %}
+                            <ul class="list-three-fold-width list-style-tick">
+
+                                <li>{{data.faci_id.faci_name}}</li>
+
+                            </ul>
+                            {% endfor %}
+                        </div>
+                    </div>
+                </div>
+              
+               
+                
+                <div class="property-overview border rounded bg-white p-30 mb-30">
+                    <div class="row row-cols-1">
+                        <div class="col">
+                            <div id="comments" class="comments">
+                                <div class="comment-head mb-4 gap-4 d-flex align-items-center">
+                                    <div class="comment-title">
+                                        <h3>{{feed_c}} User Reviews</h3>
+                                    </div>
+                                 
+                                </div>
+                            
+
+                                {% for data in feedback %}
+                                <div class="media mt-4">
+                                   
+                                    <div class="media-body">
+                                        <div class="row d-flex align-items-center">
+                                            <h5 class="col-auto mb-0">{{data.user_id.first_name}}</h5>
+                                            
+                                        </div>
+                                        <div class="comments-date mb-2"><span>Posted On {{data.feed_date}}</div>
+                                        <b>{{data.feed_desc}}</b>
+                                    </div>
+                                </div>
+                                {% endfor %}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="property-overview border rounded bg-white p-30 mb-30">
+                    <div class="row row-cols-1">
+                        <div class="col">
+                            <h5 class="mb-4">Write A Review</h5>
+                            <form class="contact_message form-boder" action="/client/in_feed/" method="POST" novalidate="novalidate">
+                                {% csrf_token %}
+                                <div class="row g-3">
+                                    <div class="col-md-6 col-sm-6">
+                                        <input class="form-control" id="name" name="pg_id" placeholder="Name"
+                                            type="hidden" value="{{full.pg_id}}">
+                                    </div>
+                                    
+                                    <div class="col-md-12 col-sm-12">
+                                        <textarea class="form-control" id="message" rows="5" name="desc"
+                                            placeholder="Message"></textarea>
+                                    </div>
+                                    <div class="col-md-12 col-sm-6">
+                                        <button class="btn btn-primary" id="send" value="send"
+                                            type="submit">Submit</button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!--============== Property Details End ==============-->
+{% endblock %}

@@ -1,0 +1,6 @@
+
+{% load static %}
+{% for data in area %}
+    <li> <a href="/client/banner1/{{data.area_id}}" class="dropdown-item">{{data.area_name}}</a> </li>
+
+{% endfor %}

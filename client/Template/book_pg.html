@@ -1,0 +1,80 @@
+{% extends "c_header-footer.html" %}
+{% load static %}
+<!--============== Signup Form Start ==============-->
+{% block content %}
+<script src="http://code.jquery.com/jquery-latest.js"></script>
+<div class="full-row" style="background-image: url('/static/assets/images/background/pg.jpg');">
+    <div class="container"><br><br><br>
+        <div class="row">
+            <div class="col-xl-5 col-lg-6 mx-auto">
+                <div class="bg-white xs-p-20 p-30 border rounded">
+                    <div class="form-icon-left rounded form-boder">
+                        <h4 class="mb-4">Enter Booking Details</h4>
+                        <form action="/client/bookpg/{{full.pg_id}}" method="POST">
+                            {% csrf_token %}
+                            <input type="hidden" id="pgid" name="pgid" value="{{pgid}}">
+                            <div class="col">
+                                <label class="mb-2">Select Room</label>
+                                <select class="form-control" id="room_type_id"  name="pg_rooms_id">
+                                    {% for data in pr %}
+                                    <option value="{{data.room_type_id_id}}">{{data.room_type_id.room_type_name}}</option>
+                                    {% endfor %}
+                                </select>
+                            </div>
+
+                            <div class="row row-cols-1 g-3">
+                                <div class="col">
+                                    <label class="mb-2">Select Package</label>
+                                    <select class="form-control" id="pack_id" name="pack_id">
+                                        {% for data in pack %}
+                                        <option value="{{data.pack_id}}">{{data.pack_name}} - {{data.pack_price}} -
+                                            {{data.pack_month}}</option>
+                                        {% endfor %}
+                                    </select>
+                                </div>
+
+                                <div class="col">
+                                    <label class="mb-2">Booking Description</label>
+                                    <textarea name="book_desc" id="" cols="30" rows="3"></textarea>
+                                </div>
+                                <div class="col">
+                                    <button type="submit" class="btn btn-primary mb-3">Book PG</button>
+                                </div>
+                                {% for data in messages %}
+
+                                <span style="color: red;">{{data}}</span>
+                                {% endfor %}
+
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    $("#room_type_id").change(function () {
+       
+        //var url = $("#personForm").attr("data-cities-url");  // get the url of the load_cities view
+        var room_type_id = $(this).val();  // get the selected country ID from the HTML input
+        var pg_id = $("#pgid").val();
+        alert(room_type_id);
+        $.ajax({                       // initialize an AJAX request
+            url: "/client/client_header_package/",                    // set the url of the request (= localhost:8000/hr/ajax/load-cities/)
+            data: {
+                'pack': room_type_id,       // add the country id to the GET parameters
+                'pgid': pg_id
+            },
+            success: function (data) {   // data is the return of the load_cities view function
+                $("#pack_id").html(data);  // replace the contents of the city input with the data that came from the server
+            }
+        });
+
+    });
+
+</script>
+
+<!--============== Signup Form End ==============-->
+{% endblock %}

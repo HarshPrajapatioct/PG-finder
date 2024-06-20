@@ -1,0 +1,64 @@
+{% extends "header-footer.html" %}
+{% load static %}
+    <!-- Main content -->
+    {% block content %}
+    <section class="content">
+        <div class="row">
+          <div class="col-xs-12">
+
+           
+            <div class="box">
+              <div class="box-header">
+                <h3 class="box-title">Room Type Data</h3>
+                <h6 class="box-subtitle">Export data to Copy, CSV, Excel, PDF & Print</h6>
+            
+                <td><a href="/in_pgtype/"><button type="submit" class="btn btn-primary">Insert</button></a></td>
+              </div>
+              <!-- /.box-header -->
+              <div class="box-body">
+                <table id="example" class="table table-bordered table-hover display nowrap margin-top-10">
+                  <thead>
+                      <tr>
+                        <th>Room type Id</th>
+                        
+                        <th>Room Type name</th>
+                        <th>Room Type Description</th>
+                        <th>Delete Data</th>
+                        <th>Update Data</th>
+                        
+                      </tr>
+                  </thead>
+                  <tbody>
+                    {% for date in pg_type %}
+                      <tr>
+
+                        <td>{{date.room_type_id}}</td>
+                        
+                        <td>{{date.room_type_name}}</td>
+                        <td>{{date.room_desc}}</td>
+                        <td><a href="/del_pg_type/{{date.room_type_id}}"><img src="{% static 'images/del-logo.png' %}" class="user-image"  height="22" alt="User Image"></a></td>
+                        <td><a href="/up_type/{{date.room_type_id}}"><img src="{% static 'images/update.png' %}" class="user-image"  height="22" alt="User Image"></a></td>
+                        
+                       
+                      </tr>
+                      {% endfor %}
+                     
+                  </tbody>
+                  
+             
+              </table>
+  
+                
+              </div>
+              <!-- /.box-body -->
+            </div>
+            <!-- /.box -->          
+          </div>
+          <!-- /.col -->
+        </div>
+        <!-- /.row -->
+      </section>
+      <!-- /.content -->
+    </div>
+    <!-- /.content-wrapper -->
+    {% endblock %}

@@ -1,0 +1,97 @@
+{% extends "header-footer.html" %}
+{% load static %}
+    <!-- Main content -->
+    {% block content %}
+
+    <section class="content">
+     
+     <!-- Basic Forms -->
+      <div class="box box-default">
+        <div class="box-header with-border">
+          <h3 class="box-title">Default Basic Forms</h3>
+
+          <div class="box-tools pull-right">
+            <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
+            <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-remove"></i></button>
+          </div> 
+        </div>
+        <!-- /.box-header -->
+        <div class="box-body">
+          <div class="row">
+            <div class="col-md-12">
+            	<div class="form-group clearfix">
+                <form method="POST" action="/in_response/{{inq.inquiry_id}}">
+                  {% csrf_token %}
+
+                  <div class="form-group clearfix">
+                    <label for="example-search-input" class="col-sm-2 col-form-label">USER ID</label>
+                    <div class="col-sm-10">
+    
+                        <input class="form-control" name="user_id" type="text" value="{{inq.user_id_id}}"
+                             id="example-search-input"> 
+                    </div>
+                </div>
+                <div class="form-group clearfix">
+                  <label for="example-search-input" class="col-sm-2 col-form-label">Contact No.</label>
+                  <div class="col-sm-10">
+  
+                      <input class="form-control" name="contact_no" type="number" value="{{inq.contact_no}}"
+                           id="example-search-input"> 
+                  </div>
+              </div>
+              <div class="form-group clearfix">
+                <label for="example-search-input" class="col-sm-2 col-form-label">Email No.</label>
+                <div class="col-sm-10">
+
+                    <input class="form-control" name="email_id" type="email" value="{{inq.email_id}}"
+                         id="example-search-input"> 
+                </div>
+            </div>
+            <div class="form-group clearfix">
+              <label for="example-search-input" class="col-sm-2 col-form-label">User MEssage</label>
+              <div class="col-sm-10">
+
+                  <input class="form-control" name="u_message" type="text" value="{{inq.u_message}}"
+                       id="example-search-input"> 
+              </div>
+          </div>
+				<div class="form-group clearfix">
+				  <label for="example-search-input" class="col-sm-2 col-form-label">Response</label>
+				  <div class="col-sm-10">
+					<textarea class="form-control" name="response" type="text" value="" id="example-search-input"></textarea>
+				  </div>
+				</div>
+			
+        <div class="box-footer">
+          <button type="submit" class="btn btn-primary">Submit</button>
+        </div>
+      </form>
+        
+
+			
+			
+        
+				
+			
+				
+				
+		
+            </div>
+            <!-- /.col -->
+          </div>
+          <!-- /.row -->
+        </div>
+        <!-- /.box-body -->
+      </div>
+      <!-- /.box -->
+     
+     
+      <!-- /.row -->
+      
+    </section>
+    <!-- /.content -->
+  </div>
+  <!-- /.content-wrapper -->
+    
+  {% endblock %}
+  

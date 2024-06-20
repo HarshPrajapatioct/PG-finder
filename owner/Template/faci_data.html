@@ -1,0 +1,54 @@
+
+{% extends "owner_profile_header_footer.html" %}
+{% load static %}
+                    <!--============== Dashboard Start ==============-->
+                    {% block content %}
+                    <div class="full-row p-10 xs-p-0">
+                        <div class="container-fluid">
+                            <div class="row">
+                                <div class="col-12">
+                                    <h3 class="my-3">Facility Data</h3>
+                                </div>
+                                <div class="row">
+                                    <div class="header-unfix border-bottom bg-white">
+                                        <div class="p-30 bg-white border rounded mb-30 clearfix">
+                                    <table id="example" class="table table-bordered table-hover display nowrap margin-top-10">
+                                      <thead>
+                                        <tr>
+                                          <th>Facility Id</th>
+                                          <th>Facility name</th>
+                                          <th>Facility description</th>
+                                         
+                          
+                                        </tr>
+                                      </thead>
+                                      <tbody>
+                                        {% for date in f %}
+                                        <tr>
+                          
+                                          <td>{{date.faci_id}}</td>
+                                          <td>{{date.faci_name}}</td>
+                                          <td>{{date.faci_desc}}</td>
+                                         
+                                          
+                          
+                          
+                          
+                          
+                          
+                                        </tr>
+                                        {% endfor %}
+                          
+                                      </tbody>
+                          
+                          
+                                    </table>
+                                </div>
+                                    </div>
+                                  </div> 
+                            
+                            </div>
+                        </div>
+                    </div>
+                    <!--============== Dashboard end ==============-->
+{% endblock %}

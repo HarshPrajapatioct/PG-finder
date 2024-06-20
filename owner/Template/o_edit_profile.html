@@ -1,0 +1,85 @@
+
+{% extends "owner_profile_header_footer.html" %}
+{% load static %}
+                    <!--============== Dashboard Start ==============-->
+                    {% block content %}
+                    <div class="full-row px-40 py-30 xs-p-0">
+                        <div class="container-fluid">
+                            <div class="row">
+                                <div class="col">
+                                    <h3 class="my-3">Edit Profile</h3>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col">
+                                    <div class="border rounded bg-white p-30 mb-30">
+                                        <div class="row">
+                                            <div class="col-xl-2">
+                                                <h4 class="mb-4 font-400">Profile Information</h4>
+                                            </div>
+                                            <div class="col-xl-10">
+                                                <form action="/owner/edit_profile/" class="form-boder" method="POST">
+                                                    {% csrf_token %}
+                                                    <div class="row">
+                                                        
+                                                        <div class="col-lg-6 mb-20">
+                                                            <label class="mb-2 font-fifteen font-500">First Name</label>
+                                                            <input class="form-control" name="owner_first_name" type="text" value="{{ep.owner_first_name}}">
+                                                        </div>
+                                                        <div class="col-lg-6 mb-20">
+                                                            <label class="mb-2 font-fifteen font-500">Last Name</label>
+                                                            <input class="form-control" name="owner_last_name" placeholder="Adams" type="text" value="{{ep.owner_last_name}}">
+                                                        </div>
+                                                        <div class="col-lg-6 mb-20">
+                                                            <label class="mb-2 font-fifteen font-500">Contact</label>
+                                                            <input class="form-control" name="owner_contact_no" placeholder="+1-908-941-6051" type="number" value="{{ep.owner_contact_no}}">
+                                                        </div>
+                                                        <div class="col-lg-6 mb-20">
+                                                            <label class="mb-2 font-fifteen font-500">Email</label>
+                                                            <input class="form-control" name="owner_email_id" placeholder="admin@website.com" type="email" value="{{ep.owner_email_id}}">
+                                                        </div>
+                                                        <div class="col-lg-6 mb-20">
+                                                            <label class="mb-2 font-fifteen font-500">Password</label>
+                                                            <input class="form-control" name="owner_password" placeholder="admin@website.com" type="password"  value="{{ep.owner_password}}">
+                                                        </div>
+                                                        <div class="col-lg-6 mb-20">
+                                                            <label class="mb-2 font-fifteen font-500">Address</label>
+                                                            <input class="form-control" name="owner_address" placeholder="3170 Fairfax Drive New Brunswick, NJ 08901" type="text" value="{{ep.owner_address}}">
+                                                        </div>
+                                                        <div class="col-lg-6 mb-20">
+                                                            <!-- <label class="mb-2 font-fifteen font-500">Gender</label> -->
+                                                            <input class="form-control" name="owner_gender" placeholder="3170 Fairfax Drive New Brunswick, NJ 08901" type="hidden" value="{{ep.owner_gender}}">
+                                                        </div>
+                                                       
+                                                        
+                                                        <div class="col-lg-6 mb-20">
+                                                            <!-- <label class="mb-2 font-fifteen font-500">Password</label> -->
+                                                            <input class="form-control" name="otp" placeholder="admin@website.com" type="hidden"  value="0">
+                                                        </div>
+                                                       
+                                                        <div class="col-lg-6 mb-20">
+                                                            <!-- <label class="mb-2 font-fifteen font-500">Password</label> -->
+                                                            <input class="form-control" name="otp_used" placeholder="admin@website.com" type="hidden"  value="0">
+                                                        </div>
+                                                   
+                                                     
+                                                        
+                                                       
+                                                     
+                                                       
+                                                        <div class="col-12 mb-20">
+                                                            <button type="submit" class="btn btn-primary">Update Profile</button>
+                                                        </div>
+                                                    </div>
+                                                </form>
+                                     
+                                            </div>
+                                        </div>
+                                    </div>
+ 
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!--============== Dashboard End ==============-->
+{% endblock %}

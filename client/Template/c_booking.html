@@ -1,0 +1,78 @@
+{% extends "client_profile_header_footer.html" %}
+{% load static %}
+                    <!--============== Dashboard Start ==============-->
+                    {% block content %}
+                    <div class="full-row px-40 py-30 xs-p-0">
+                        <div class="container-fluid">
+                            <div class="row">
+                                <div class="col">
+                                    <h3 class="my-3">Booking List</h3>
+                                    
+                                </div>
+                               
+                            </div>
+                            <a href="/client/index/" style="display: flex; flex-direction: row;justify-content: flex-end; font-style:italic;"  onMouseOver="this.style.color='#00F'" onMouseOut="this.style.color='#aa8453'">&#x2190;&nbsp;&nbsp;&nbsp;Go to the home page</a>
+                            <div class="row">
+                                <div class="col">
+                                    <div class="dashboard-panel border bg-white rounded overflow-hidden w-100">
+                                        <div class="overflow-x-scroll font-fifteen">
+                                            
+                                            <table class="w-100 items-list bg-transparent">
+                                                <thead>
+                                                    <tr class="bg-white">
+                                                        <th>PG's</th>
+                                                        <th>Booking Date</th>
+                                                        <th>Ending Date</th>
+                                                        <th>Package Name</th>
+                                                        <th>Booking Status</th>
+                                                        <th>Payment Status</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    {% for data in book %}
+                                                    <tr>
+                                                        <td>
+                                                            <img class="rounded" src="{% static '/images/' %}{{data.pack_id.pg_id.pg_image}}" alt="">
+                                                            <div class="property-info d-table">
+                                                                <h5 class="text-secondary font-400">{{data.pack_id.pg_id.pg_name}}</h5>
+                                                                <span><i class="fas fa-map-marker-alt text-primary font-13"></i>{{data.pack_id.pg_id.area_id.area_name}}</span>
+                                                                <div class="price mt-2"> <span class="text-primary">&#8377;{{data.pack_id.pack_price}}</span>  </div>
+                                                            </div>
+                                                        </td>
+                                                        <td>{{data.book_date}}</td>
+                                                        <td>{{data.end_date}}</td>
+                                                        <td>{{data.pack_id.pack_name}}</td>
+                                                        <td>{% if data.book_status == 0 %}
+                                                            Pending
+                                                          {% elif data.book_status == 1 %}
+                                                            Accepted
+                                                          {% else %}
+                                                            Rejected
+                                                          {% endif %}</td>
+                                                          <td>{% if data.payment_status == 0 %}
+                                                            Pending
+                                                           {% else %}
+                                                           success
+                                                           {% endif %}
+                                                           </td>
+                                                           <!-- <td><a href="/client/checkout/">Pay Now</a></td> -->
+                                                    </tr>
+                                                    {% endfor %}
+                                                   
+                                                   
+                                                   
+                                                    
+                                                    
+                                                    
+                        
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                       
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!--============== Dashboard End ==============-->
+                    {% endblock %}

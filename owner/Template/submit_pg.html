@@ -1,0 +1,90 @@
+{% extends "owner_profile_header_footer.html" %}
+{% load static %}
+                    <!--============== Dashboard Start ==============-->
+                    {% block content %}
+                    <div class="full-row px-40 py-30 xs-p-0">
+                        <div class="container-fluid">
+                            <div class="row">
+                                <div class="col">
+                                    <h3 class="my-3">Add New PG</h3>
+                                </div>
+                            </div>
+
+                           
+                            <div class="row">
+                                <div class="col mb-30">
+                                    <div class="border rounded bg-white p-30">
+                                        <h4 class="mb-4">Submit PG</h4>
+                                        <form class="form-boder" action="/owner/submitpg/" method="POST" enctype="multipart/form-data">
+                                            {% csrf_token %}
+                                            <div class="row">
+                                                <div class="col-lg-4 col-md-6 mb-20">
+                                                    
+                                                    <input class="form-control" id="Bathrooms" name="owner_id" type="hidden" value="{{o}}">
+                                                </div>
+                                                <div class="col-lg-4 col-md-6 mb-20">
+                                                    <label class="mb-2 font-fifteen font-500">Area ID</label>
+                                                    <select class="form-control" name="area_id">
+                                                        {% for data in ar %}
+														<option  value="{{data.area_id}}">{{data.area_name}}</option>
+                                                        {% endfor %}
+													</select>
+                                                    <!-- <input class="form-control" id="areasize" name="areasize" type="text"> -->
+                                                </div>
+                                                <div class="col-lg-4 col-md-6 mb-20">
+                                                    <label class="mb-2 font-fifteen font-500">Category Id</label>
+                                                    <select class="form-control" name="cate_id">
+                                                        {% for data in cate %}
+														<option  value="{{data.cate_id}}">{{data.cate_name}}</option>
+                                                        {% endfor %}
+													</select>
+                                                    <!-- <input class="form-control" id="propertyid" name="propertyid" type="text"> -->
+                                                </div>
+                                               
+                                                
+                                               
+
+                                                <div class="col-lg-4 col-md-6 mb-20">
+                                                    <label class="mb-2 font-fifteen font-500">PG Name</label>
+                                                    <input class="form-control" id="Bathrooms" name="pg_name" type="text">
+                                                </div>
+                                                <div class="col-lg-4 col-md-6 mb-20">
+                                                    <label class="mb-2 font-fifteen font-500">PG Image</label>
+                                                    <img src="" height="200" width="200" name="output" id="output" style="margin-left: 2px; border-radius: 5px,5px,5px,5px;"/><br><br>
+                                                    <input class="form-control" name="pg_image" type="file" value="" accept="image/*" onchange="loadFile(event)">
+                                                </div>
+                                                <div class="col-lg-4 col-md-6 mb-20">
+                                                    <label class="mb-2 font-fifteen font-500">PG Address</label>
+                                                    <input class="form-control" id="garagesize" name="pg_address" type="text">
+                                                </div>
+
+                                                <div class="col-lg-4 col-md-6 mb-20">
+                                                    <label class="mb-2 font-fifteen font-500">PG E-mail</label>
+                                                    <input class="form-control" id="build" name="pg_email" type="email">
+                                                </div>
+                                                <div class="col-lg-4 col-md-6 mb-20">
+                                                    <label class="mb-2 font-fifteen font-500">PG Contect no.</label>
+                                                    <input class="form-control" id="video" name="pg_contact" type="number">
+                                                </div>
+                                                <div class="col-lg-4 col-md-6 mb-20">
+                                                    <label class="mb-2 font-fifteen font-500">PG Description</label>
+                                                    <input class="form-control" id="video" name="pg_desc" type="text">
+                                                </div>
+                                                <script>
+                                                    function loadFile(event){
+                                                      document.getElementById('output').src=
+                                                      URL.createObjectURL(event.target.files[0]);
+                                                    }
+                                                  </script>
+                                               
+                                                <div class="col-md-12 mb-20">
+                                                    <button class="btn btn-primary"  type="submit">Submit</button>
+                                                </div>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                           
+                    <!--============== Dashboard End ==============-->
+{% endblock %}

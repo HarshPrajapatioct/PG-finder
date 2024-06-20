@@ -1,0 +1,307 @@
+﻿{% extends "header-footer.html" %}
+{% load static %}
+<!-- Main content -->
+{% block content %}
+
+    <!-- Main content -->
+    <section class="content">
+      <div class="row">
+        <div class="col-lg-3 col-xs-6">
+          <!-- small box -->
+          <div class="small-box bg-blue">
+            <div class="inner">
+              <h3>{{book}}</h3>
+
+              <p>Booking</p>
+            </div>
+            <div class="icon">
+              <i class="fa fa-shopping-bag"></i>
+            </div>
+            <a href="/show_booking/" class="small-box-footer">More info <i class="fa fa-arrow-right"></i></a>
+          </div>
+        </div>
+        <!-- ./col -->
+        <div class="col-lg-3 col-xs-6">
+          <!-- small box -->
+          <div class="small-box bg-success">
+            <div class="inner">
+              <h3>{{pg}}<sup style="font-size: 20px"></sup></h3>
+
+              <p>PG's</p>
+            </div>
+            <div class="icon">
+              <i class="fa fa-bar-chart"></i>
+            </div>
+            <a href="/show_details/" class="small-box-footer">More info <i class="fa fa-arrow-right"></i></a>
+          </div>
+        </div>
+        <!-- ./col -->
+        <div class="col-lg-3 col-xs-6">
+          <!-- small box -->
+          <div class="small-box bg-purple">
+            <div class="inner">
+              <h3>{{users}}</h3>
+
+              <p>User's</p>
+            </div>
+            <div class="icon">
+              <i class="fa fa-user-plus"></i>
+            </div>
+            <a href="/show/" class="small-box-footer">More info <i class="fa fa-arrow-right"></i></a>
+          </div>
+        </div>
+        <!-- ./col -->
+        <div class="col-lg-3 col-xs-6">
+          <!-- small box -->
+          <div class="small-box bg-danger">
+            <div class="inner">
+              <h3>{{feed2}}</h3>
+
+              <p>FeedBack's</p>
+            </div>
+            <div class="icon">
+              <i class="fa fa-pie-chart"></i>
+            </div>
+            <a href="/show_feed/" class="small-box-footer">More info <i class="fa fa-arrow-right"></i></a>
+          </div>
+        </div>
+        <!-- ./col -->
+      </div>
+      <!-- /.row -->
+      <!-- Main row -->
+      <div class="row">
+        <!-- Left col -->
+        <section class="col-lg-6 connectedSortable">		
+		  <!-- solid Earning graph -->
+          <div class="box" style="width: 204%;">
+            <div class="box-header">
+              <i class="fa fa-th"></i>
+
+              <h3 class="box-title">Area Wise PG</h3>
+
+              <div class="box-tools pull-right">
+                <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
+                </button>
+                <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i>
+                </button>
+              </div>
+            </div>
+            <div class="box-body border-radius-none" >
+              <div class="chart" id="morris-area-chart2">
+                {% include 'base.html' %}
+
+                <script>
+                    
+                
+                    var endpoint = '/api/chart/data/'
+                    var defaultData = []
+                    var labels = [];
+                    $.ajax({
+                        method: "GET",
+                        url: endpoint,
+                        success: function(data) {
+                            labels = data.labels
+                            defaultData = data.default
+                            setChart()
+                        },
+                        error: function(error_data) {
+                            console.log("error")
+                            console.log(error_data)
+                        }
+                    })
+                
+                    function setChart() {
+                       var ctx = document.getElementById("myChart");
+                        var ctx2 = document.getElementById("myChart2");
+                        var myChart = new Chart(ctx2, {
+                            type: 'bar',
+                            data: {
+                                labels:labels,
+                                datasets: [{
+                                    label: 'Area Wise PG',
+                                    data: defaultData,
+                                    backgroundColor: [
+                                        'rgba(255, 99, 132, 0.2)',
+                                        'rgba(54, 162, 235, 0.2)',
+                                        'rgba(255, 206, 86, 0.2)',
+                                        'rgba(75, 192, 192, 0.2)',
+                                        'rgba(153, 102, 255, 0.2)',
+                                        'rgba(255, 159, 64, 0.2)'
+                                    ],
+                                    borderColor: [
+                                        'rgba(255,99,132,1)',
+                                        'rgba(54, 162, 235, 1)',
+                                        'rgba(255, 206, 86, 1)',
+                                        'rgba(75, 192, 192, 1)',
+                                        'rgba(153, 102, 255, 1)',
+                                        'rgba(255, 159, 64, 1)'
+                                    ],
+                                    borderWidth: 1
+                                }]
+                            },
+                            options: {
+                                scales: {
+                                    yAxes: [{
+                                        ticks: {
+                                            beginAtZero: true
+                                        }
+                                    }]
+                                }
+                            }
+                        });
+                
+                        var myChart = new Chart(ctx, {
+                            type: 'polarArea',
+                            data: {
+                                labels: labels,
+                                datasets: [{
+                                    label: '# value',
+                                    data: defaultData,
+                                    backgroundColor: [
+                                        'rgba(255, 99, 132, 0.2)',
+                                        'rgba(54, 162, 235, 0.2)',
+                                        'rgba(255, 206, 86, 0.2)',
+                                        'rgba(75, 192, 192, 0.2)',
+                                        'rgba(153, 102, 255, 0.2)',
+                                        'rgba(255, 159, 64, 0.2)'
+                                    ],
+                                    borderColor: [
+                                        'rgba(255,99,132,1)',
+                                        'rgba(54, 162, 235, 1)',
+                                        'rgba(255, 206, 86, 1)',
+                                        'rgba(75, 192, 192, 1)',
+                                        'rgba(153, 102, 255, 1)',
+                                        'rgba(255, 159, 64, 1)'
+                                    ],
+                                    borderWidth: 1
+                                }]
+                            },
+                            options: {
+                                scales: {
+                                    yAxes: [{
+                                        ticks: {
+                                            beginAtZero: true
+                                        }
+                                    }]
+                                }
+                            }
+                        });
+                    }
+                    // var ctx = document.getElementById("myChart");
+                
+                
+                
+                    
+                </script>
+                
+
+              </div>
+            </div>
+            <!-- /.box-body -->
+          </div>
+          <!-- /.box -->
+
+          <!-- Chat box -->
+      
+          <!-- TO DO List -->
+          
+        </section>
+        <!-- /.Left col -->
+        <!-- right col (We are only adding the ID to make the widgets sortable)-->
+      
+        <!-- right col -->
+      </div>
+      <!-- /.row (main row) -->
+
+    </section>
+
+
+   
+    <section class="content">
+      <div class="row">
+        <div class="col-xs-12">
+
+         
+          <div class="box">
+            <div class="box-header">
+              <h3 class="box-title">Booking Details</h3>
+              <!-- <h6 class="box-subtitle">Export data to Copy, CSV, Excel, PDF & Print</h6> -->
+            </div>
+            
+            <div class="box-body">
+              
+              <table id="example" class="table table-bordered table-hover display nowrap margin-top-10">
+                <thead>
+                    <tr>
+                      <th>Booking Id</th>
+                      <th>User</th>
+                      <th>Booking Date</th>
+                      <th>Booking description</th>
+                      <th>Package </th>
+                      <th>Payment Status </th>
+                      <th>Booking Status </th>
+                      <th>Accept/Reject</th>
+
+                    </tr>
+                </thead>
+                
+                <tbody>
+                  {% for date in booking %}
+                    <tr>
+                      {% if date.book_status == 0 %}
+                      <td>{{date.book_id}}</td>
+                      <td>{{date.user_id.first_name}}</td>
+                      <td>{{date.book_date}}</td>
+                      <td>{{date.book_desc}}</td>
+                      <td>{{date.pack_id.pack_price}}</td>
+                      <td>{% if date.payment_status == 0 %}
+                        Pending
+                       {% elif date.payment_status == 1 %}
+                       Cash Payment
+                       {% else %}
+                       Online Payment
+                       {% endif %}
+                       </td>
+                        <td>
+                        {% if date.book_status == 0 %}
+                          Pending
+                        {% elif date.book_status == 1 %}
+                          Accepted
+                        {% else %}
+                          Rejected
+                        {% endif %}
+                      </td>
+                      <td> 
+                        {% if date.book_status == 0 %}
+                      <a href="/accepted/{{date.book_id}}">Accept</a>
+                      <a href="/rejected/{{date.book_id}}">Reject</a>
+                       {% endif %}
+
+                      </td>
+
+                      {% endif %}
+                    </tr>
+                    {% endfor %}
+                   
+                </tbody>
+                
+                
+           
+            </table>
+
+              
+            </div>
+            <!-- /.box-body -->
+          </div>
+          <!-- /.box -->          
+        </div>
+        <!-- /.col -->
+      </div>
+      <!-- /.row -->
+    </section>
+    <!-- /.content -->
+   
+  </div>
+  <!-- /.content-wrapper -->
+  {% endblock %}
+  

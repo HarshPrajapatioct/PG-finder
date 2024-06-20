@@ -1,0 +1,126 @@
+
+{% extends "owner_profile_header_footer.html" %}
+{% load static %}
+                    <!--============== Dashboard Start ==============-->
+                    {% block content %}
+                    <div class="full-row p-10 xs-p-0">
+                        <div class="container-fluid">
+                            <div class="row">
+                                <div class="col-12">
+                                    <h3 class="my-3">Dashboard</h3>
+                                </div>
+                                <div class="col-12">
+                                    <div class="notice-warning alert alert-warning alert-dismissible fade show" role="alert">
+                                      <span><strong>Holy guacamole!</strong> You should check in on some of those fields below.</span>
+                                      <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row row-cols-xxl-4 row-cols-lg-2 row-cols-1 g-4 mb-30">
+                                <div class="col">
+                                    <div class="ball p-4 position-relative text-white rounded" style="background-color: #55e3b0;">
+                                        <i class="flaticon-home flat-medium float-start pe-3" aria-hidden="true"></i>
+                                        <h4 class="m-0 text-white">340</h4>
+                                        <span class="d-table">Available Property</span>
+                                    </div>
+                                </div>
+                                <div class="col">
+                                    <div class="ball p-4 position-relative text-white rounded" style="background-color: #dc69f1;">
+                                        <i class="flaticon-home flat-medium float-start pe-3" aria-hidden="true"></i>
+                                        <h4 class="m-0 text-white">227</h4>
+                                        <span class="d-table">Property For Rent</span>
+                                    </div>
+                                </div>
+                                <div class="col">
+                                    <div class="ball p-4 position-relative text-white rounded" style="background-color: #f1c643;">
+                                        <i class="flaticon-home flat-medium float-start pe-3" aria-hidden="true"></i>
+                                        <h4 class="m-0 text-white">113</h4>
+                                        <span class="d-table">Property For Sale</span>
+                                    </div>
+                                </div>
+                                <div class="col">
+                                    <div class="ball p-4 position-relative text-white rounded" style="background-color: #ee6565;">
+                                        <i class="flaticon-home flat-medium float-start pe-3" aria-hidden="true"></i>
+                                        <h4 class="m-0 text-white">$348.00</h4>
+                                        <span class="d-table">Total Earning</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-12 col-xl-6">
+                                    <div class="p-30 bg-white border rounded mb-30 clearfix">
+                                        <h5 class="mb-4">Profile Overview</h5>
+                                        <div class="row row-cols-lg-2 row-cols-1 g-4">
+                                            <div class="col">
+                                                <i class="flaticon-home flat-medium text-primary float-start me-3"></i>
+                                                <span class="m-0 h5 d-block">580</span>
+                                                <span class="d-table">Property Deals</span>
+                                            </div>
+                                            <div class="col">
+                                                <i class="flaticon-chat flat-medium text-primary float-start me-3"></i>
+                                                <span class="m-0 h5 d-block">580</span>
+                                                <span class="d-table">Total Public Comments</span>
+                                            </div>
+                                            <div class="col">
+                                                <i class="flaticon-audit flat-medium text-primary float-start me-3"></i>
+                                                <span class="m-0 h5 d-block">580</span>
+                                                <span class="d-table">Property Views</span>
+                                            </div>
+                                            <div class="col">
+                                                <i class="flaticon-exam flat-medium text-primary float-start me-3"></i>
+                                                <span class="m-0 h5 d-block">580</span>
+                                                <span class="d-table">Bookmarked Property</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="p-30 bg-white border rounded mb-30 clearfix">
+                                        <h5 class="mb-4">Recent Activity</h5>
+                                        <ul>
+                                            <li class="font-13 mb-3">Dec 27th, 10:12 am <span class="text-secondary">- Get new message from custome on city tradecenter.</span></li>
+                                            <li class="font-13 mb-3">Dec 21th, 09:12 pm <span class="text-secondary">- New property approve for Rent by homex.</span></li>
+                                            <li class="font-13 mb-3">Dec 18th, 12:12 pm <span class="text-secondary">- Booking request for Nirala Appartment</span></li>
+                                            <li class="font-13 mb-3">Dec 15th, 05:45 pm <span class="text-secondary">- Payment receive from customer invoice no 2319891</span></li>
+                                            <li class="font-13 mb-3">Dec 15th, 03:32 pm <span class="text-secondary">- Comments replay by admin in Apolo Family Appartment</span></li>
+                                            <li class="font-13 mb-3">Dec 15th, 03:32 pm <span class="text-secondary">- Comments replay by admin in Apolo Family Appartment</span></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div class="col-md-12 col-xl-6">
+                                    <div class="property-overview border rounded bg-white p-30 mb-20">
+                                        <h5 class="mb-4">Property Views</h5>
+                                        <form class="form-boder rounded quick-search form-icon-right p-0 mb-2" action="#" method="post">
+                                            <div class="row g-3">
+                                                <div class="col">
+                                                    <select>
+														<option>Yearly</option>
+														<option>Monthly</option>
+														<option>Weekly</option>
+														<option>Daily</option>
+													</select>
+                                                </div>
+                                                <div class="col">
+                                                    <select>
+														<option>2020</option>
+														<option>2019</option>
+														<option>2018</option>
+														<option>2017</option>
+													</select>
+                                                </div>
+                                                <div class="col">
+                                                    <button class="btn btn-primary w-100">Go</button>
+                                                </div>
+                                            </div>
+                                        </form>
+
+                                        <!-- Visitor data -->
+                                        <div class="tab-pane tab-hide" id="visit-panel-1" style="display: block;">
+                                            <canvas id="mychart" class="w-100 mt-3" height="500"></canvas>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!--============== Dashboard end ==============-->
+{% endblock %}

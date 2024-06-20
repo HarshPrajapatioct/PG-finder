@@ -1,0 +1,38 @@
+{% load static %}
+{% for date in booking1 %}
+<tr>
+
+    <td>{{date.book_id}}</td>
+    <td>{{date.user_id.first_name}}</td>
+    <td>{{date.book_date}}</td>
+    <td>{{date.end_date}}</td>
+    <td>{{date.book_desc}}</td>
+    <td>{{date.pack_id.pack_price}}{{date.pack_id.pack_name}}</td>
+    <td>{% if date.payment_status == 0 %}
+        Pending
+        {% elif date.payment_status == 1 %}
+        Cash Payment
+        {% else %}
+        Online Payment
+        {% endif %}
+
+    </td>
+    <td>
+        {% if date.book_status == 0 %}
+        Pending
+        {% elif date.book_status == 1 %}
+        Accepted
+        {% else %}
+        Rejected
+        {% endif %}
+    </td>
+    <td>
+        {% if date.book_status == 0 %}
+        <a href="/owner/acceptedo/{{date.book_id}}">Accept</a>
+        <a href="/owner/rejectedo/{{date.book_id}}">Reject</a>
+        {% endif %}
+
+    </td>
+
+</tr>
+{% endfor %}

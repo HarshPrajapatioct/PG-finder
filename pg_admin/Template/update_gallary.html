@@ -1,0 +1,80 @@
+{% extends "header-footer.html" %}
+{% load static %}
+<!-- Main content -->
+{% block content %}
+
+<section class="content">
+
+    <!-- Basic Forms -->
+    <div class="box box-default">
+        <div class="box-header with-border">
+            <h3 class="box-title">Default Basic Forms</h3>
+
+            <div class="box-tools pull-right">
+                <button type="button" class="btn btn-box-tool" data-widget="collapse"><i
+                        class="fa fa-minus"></i></button>
+                <button type="button" class="btn btn-box-tool" data-widget="remove"><i
+                        class="fa fa-remove"></i></button>
+            </div>
+        </div>
+        <!-- /.box-header -->
+        <div class="box-body">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="form-group clearfix">
+                        <form method="POST" action="/up_gallary/{{gallary.gallary_id}}">
+                            {% csrf_token %}
+
+                            <div class="form-group clearfix">
+                                <label for="example-search-input" class="col-sm-2 col-form-label">PG ID</label>
+                                <div class="col-sm-10">
+                                    <select class="form-control" name="pg_id">
+                                        {% for data in p %}
+                                            <option value="{{data.pg_id}}">{{data.pg_name}}</option>
+                                        {% endfor %}
+                                    </select>
+                                    <!-- <input class="form-control" name="pg_id" type="number" value="{{gallary.pg_id}}" -->
+                                        <!-- id="example-search-input"> -->
+                                </div>
+                            </div>
+
+                            <div class="form-group clearfix">
+                                <label for="example-search-input" class="col-sm-2 col-form-label">Image</label>
+                                <div class="col-sm-10">
+                                    <input class="form-control" name="image" type="text" value="{{gallary.image}}"
+                                        id="example-search-input">
+                                </div>
+                            </div>
+
+                            <div class="box-footer">
+                                <button type="submit" class="btn btn-primary">Submit</button>
+                            </div>
+                        </form>
+
+
+
+
+
+
+
+
+
+
+                    </div>
+                    <!-- /.col -->
+                </div>
+                <!-- /.row -->
+            </div>
+            <!-- /.box-body -->
+        </div>
+        <!-- /.box -->
+
+
+        <!-- /.row -->
+
+</section>
+<!-- /.content -->
+</div>
+<!-- /.content-wrapper -->
+
+{% endblock %}

@@ -1,0 +1,68 @@
+{% extends "header-footer.html" %}
+{% load static %}
+    <!-- Main content -->
+    {% block content %}
+    <section class="content">
+        <div class="row">
+          <div class="col-xs-12">
+
+           
+            <div class="box">
+              <div class="box-header">
+                <h3 class="box-title">Inquiry Data</h3>
+                <h6 class="box-subtitle">Export data to Copy, CSV, Excel, PDF & Print</h6>
+              
+              </div>
+              <!-- /.box-header -->
+              <div class="box-body">
+                <table id="example" class="table table-bordered table-hover display nowrap margin-top-10">
+                  <thead>
+                      <tr>
+                        <th>Inquiry Id</th>
+                        <th>User name</th>
+                        <th>Contact no</th>
+                        <th>Email ID</th>
+                        <th>Message </th>
+                        <th>response</th>
+                        <th>Update</th>
+                        
+                        
+                      </tr>
+                  </thead>
+                  <tbody>
+                    {% for date in inq %}
+                      <tr>
+
+                        <td>{{date.inquiry_id}}</td>
+                        <td>{{date.user_id.first_name}}</td>
+                        <td>{{date.contact_no}}</td>
+                        <td>{{date.email_id}}</td>
+                        <td>{{date.u_message}}</td>
+                        <td>{{date.response}}</td>
+                        
+                        
+                        <td><a href="/in_response/{{date.inquiry_id}}"><img src="{% static 'images/update.png' %}" class="user-image"  height="22" alt="User Image"></a></td>
+                       
+                       
+                      </tr>
+                      {% endfor %}
+                     
+                  </tbody>
+                  
+             
+              </table>
+  
+                
+              </div>
+              <!-- /.box-body -->
+            </div>
+            <!-- /.box -->          
+          </div>
+          <!-- /.col -->
+        </div>
+        <!-- /.row -->
+      </section>
+      <!-- /.content -->
+    </div>
+    <!-- /.content-wrapper -->
+    {% endblock %}

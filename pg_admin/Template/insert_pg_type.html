@@ -1,0 +1,81 @@
+{% extends "header-footer.html" %}
+{% load static %}
+    <!-- Main content -->
+    {% block content %}
+
+    <section class="content">
+     
+     <!-- Basic Forms -->
+      <div class="box box-default">
+        <div class="box-header with-border">
+          <h3 class="box-title">Default Basic Forms</h3>
+
+          <div class="box-tools pull-right">
+            <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
+            <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-remove"></i></button>
+          </div> 
+        </div>
+        <!-- /.box-header -->
+        <div class="box-body">
+          <div class="row">
+            <div class="col-md-12">
+            	<div class="form-group clearfix">
+                <form method="POST" action="/in_pgtype/" data-parsley-validate="">
+                  {% csrf_token %}
+
+                  <!-- <div class="form-group clearfix">
+                    <label for="example-search-input" class="col-sm-2 col-form-label">Category ID</label>
+                    <div class="col-sm-10">
+                      <select class="form-control" name="cate_id">
+                        {% for data in ca %}
+                            <option value="{{data.cate_id}}">{{data.cate_name}}</option>
+                        {% endfor %}
+                    </select>
+                    </div>
+                  </div> -->
+				  
+				<div class="form-group clearfix" >
+				  <label for="example-search-input" class="col-sm-2 col-form-label">Room Type Name</label>
+				  <div class="col-sm-10">
+					<input class="form-control" name="room_type_name" type="text" value="" id="example-search-input" data-parsley-required="true" data-parsley-required-message="This field is required">
+				  </div>
+				</div>
+				<div class="form-group clearfix">
+				  <label for="example-email-input" class="col-sm-2 col-form-label">Room Type Description</label>
+				  <div class="col-sm-10">
+					<input class="form-control" name="room_desc" type="text" value="" id="example-email-input" data-parsley-required="true" data-parsley-required-message="This field is required">
+				  </div>
+				</div>
+        <div class="box-footer">
+          <button type="submit" class="btn btn-primary">Submit</button>
+        </div>
+      </form>
+        
+
+			
+			
+        
+				
+			
+				
+				
+		
+            </div>
+            <!-- /.col -->
+          </div>
+          <!-- /.row -->
+        </div>
+        <!-- /.box-body -->
+      </div>
+      <!-- /.box -->
+     
+     
+      <!-- /.row -->
+      
+    </section>
+    <!-- /.content -->
+  </div>
+  <!-- /.content-wrapper -->
+    
+  {% endblock %}
+  

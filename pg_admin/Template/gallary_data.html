@@ -1,0 +1,62 @@
+{% extends "header-footer.html" %}
+{% load static %}
+    <!-- Main content -->
+    {% block content %}
+    <section class="content">
+        <div class="row">
+          <div class="col-xs-12">
+
+           
+            <div class="box">
+              <div class="box-header">
+                <h3 class="box-title">Gallary Image's</h3>
+                <h6 class="box-subtitle">Export data to Copy, CSV, Excel, PDF & Print</h6>
+            
+                <td><a href="/in_gallary/"><button type="submit" class="btn btn-primary">Insert</button></a></td>
+              </div>
+              <!-- /.box-header -->
+              <div class="box-body">
+                <table id="example" class="table table-bordered table-hover display nowrap margin-top-10">
+                  <thead>
+                      <tr>
+                        <th>Gallary Id</th>
+                        <th>Pg Id</th>
+                        <th>Image</th>
+                        <th>Delete Data</th>
+                        
+                        
+                      </tr>
+                  </thead>
+                  <tbody>
+                    {% for date in gallary %}
+                      <tr>
+
+                        <td>{{date.gallary_id}}</td>
+                        <td>{{date.pg_id.pg_name}}</td>
+                        <td><img src="{% static '/images/' %}{{date.image}}" alt="" style="height: 100px; "></td>
+                        <td><a href="/del_gallary/{{date.gallary_id}}"><img src="{% static 'images/del-logo.png' %}" class="user-image"  height="22" alt="User Image"></a></td>
+                        
+                       
+                       
+                      </tr>
+                      {% endfor %}
+                     
+                  </tbody>
+                  
+             
+              </table>
+  
+                
+              </div>
+              <!-- /.box-body -->
+            </div>
+            <!-- /.box -->          
+          </div>
+          <!-- /.col -->
+        </div>
+        <!-- /.row -->
+      </section>
+      <!-- /.content -->
+    </div>
+    <!-- /.content-wrapper -->
+    {% endblock %}

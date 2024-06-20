@@ -1,0 +1,5 @@
+{% load static %}
+{% for data in pack %}
+<option value="{{data.pack_id}}">{{data.pack_name}} - {{data.pack_price}} -
+    {{data.pack_month}}</option>
+{% endfor %}

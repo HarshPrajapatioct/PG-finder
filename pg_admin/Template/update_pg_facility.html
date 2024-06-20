@@ -1,0 +1,85 @@
+{% extends "header-footer.html" %}
+{% load static %}
+<!-- Main content -->
+{% block content %}
+
+<section class="content">
+
+    <!-- Basic Forms -->
+    <div class="box box-default">
+        <div class="box-header with-border">
+            <h3 class="box-title">Default Basic Forms</h3>
+
+            <div class="box-tools pull-right">
+                <button type="button" class="btn btn-box-tool" data-widget="collapse"><i
+                        class="fa fa-minus"></i></button>
+                <button type="button" class="btn btn-box-tool" data-widget="remove"><i
+                        class="fa fa-remove"></i></button>
+            </div>
+        </div>
+        <!-- /.box-header -->
+        <div class="box-body">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="form-group clearfix">
+                        <form method="POST" action="/up_pf/{{pf.pg_facility_id}}">
+                            {% csrf_token %}
+
+                            <div class="form-group clearfix">
+                                <label for="example-search-input" class="col-sm-2 col-form-label">Facility ID</label>
+                                <div class="col-sm-10">
+                                    <select class="form-control" name="faci_id">
+                                        {% for data in f %}
+                                            <option value="{{data.faci_id}}">{{data.faci_name}}</option>
+                                        {% endfor %}
+                                    </select>
+                                    <!-- <input class="form-control" name="faci_id" type="number" value="{{pf.faci_id}}" -->
+                                        <!-- id="example-search-input"> -->
+                                </div>
+                            </div>
+
+                            <div class="form-group clearfix">
+                                <label for="example-search-input" class="col-sm-2 col-form-label">PG ID</label>
+                                <div class="col-sm-10">
+                                    <select class="form-control" name="pg_id">
+                                        {% for data in p %}
+                                            <option value="{{data.pg_id}}">{{data.pg_name}}</option>
+                                        {% endfor %}
+                                    </select>
+                                    <!-- <input class="form-control" name="pg_id" type="number" value="{{pf.pg_id}}" -->
+                                        <!-- id="example-search-input"> -->
+                                </div>
+                            </div>
+
+                            <div class="box-footer">
+                                <button type="submit" class="btn btn-primary">Submit</button>
+                            </div>
+                        </form>
+
+
+
+
+
+
+
+
+
+
+                    </div>
+                    <!-- /.col -->
+                </div>
+                <!-- /.row -->
+            </div>
+            <!-- /.box-body -->
+        </div>
+        <!-- /.box -->
+
+
+        <!-- /.row -->
+
+</section>
+<!-- /.content -->
+</div>
+<!-- /.content-wrapper -->
+
+{% endblock %}

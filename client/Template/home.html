@@ -1,0 +1,158 @@
+{% extends "c_header-footer.html" %}
+{% load static %}
+
+   
+        <!--============== Search Banner Start ==============-->
+        {% block content %}
+        <div class="full-row p-0" style="background-image: url('/static/assets/images/slider/4.png'); 
+        background-position: center center;" >
+            <!-- style="background-image: url(../assets/images/slider/4.png); 
+        background-position: center center;" -->
+                
+            <div class="container">
+                <div class="row">
+                    <div class="col">
+                        <div class="banner-search">
+                            <h2 class="text-start text-white">Search what you are looking for...</h2>
+                            <span class="d-table text-white mb-4 px-3 py-2 bg-primary rounded">We have listed over {{pgc}}+ PG in our database</span>
+                            <form action="/client/search_product/" class="banner-search-form bg-white p-4" method="GET" style="width: 80%;">
+
+                                <div class="row" >
+                                    <div class="col-lg-9">
+                                        <input type="text" id="search1" name="pg_name" class="form-control"
+                                            placeholder="Enter Keyword...">
+                                    </div>
+                                    <div class="col-lg-3">
+                                        <button class="btn btn-primary w-100">Search</button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--============== Search Banner End ==============-->
+
+        <!--============== Company Featured start ==============-->
+        <div class="full-row bg-secondary pb-0">
+            <div class="container">
+                <div class="row row-cols-lg-3 row-cols-1 g-4">
+                    <div class="col">
+                        <div class="custom-thumbnail text-white p-4 text-center">
+                            <div class="box-100px rounded-circle p-4 mx-auto bg-primary mb-4"><i class="flaticon-life-insurance text-white flat-medium"></i></div>
+                            <h4 class="mb-3 text-white">Easy Register</h4>
+                            <p>It's Take Less Then 2 Minute to Register.</p>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="custom-thumbnail text-white p-4 text-center">
+                            <div class="box-100px rounded-circle p-4 mx-auto bg-primary mb-4"><i class="flaticon-data text-white flat-medium"></i></div>
+                            <h4 class="mb-3 text-white">Stress Free Search</h4>
+                            <p>Real PG Photos and Transparent Pricing.</p>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="custom-thumbnail text-white p-4 text-center">
+                            <div class="box-100px rounded-circle p-4 mx-auto bg-primary mb-4"><i class="flaticon-id-card text-white flat-medium"></i></div>
+                            <h4 class="mb-3 text-white">You are Done!</h4>
+                            <p>Now you are part of Newoliving.com,Audience Will Approach You for Your property.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--============== Company Featured End ==============-->
+
+        <!--============== Property Tab Start ==============-->
+        <div class="full-row bg-secondary">
+            <div class="container">
+                <div class="row align-items-center mb-4">
+                    <div class="col-md-7">
+                        <h2 class="main-title down-line text-white">Featured PG's</h2>
+                    </div>
+
+                </div>
+                <div class="row">
+                    <div class="col">
+                        <div class="mix-element row row-cols-lg-3 row-cols-md-2 row-cols-1 g-4">
+                   {% for data in pgdetails %}
+                            <div class="col mix office">
+                                <!-- Property Grid -->
+                                <div class="property-grid-3 property-block bg-white transation-this hover-shadow">
+                                    <div class="overflow-hidden position-relative transation thumbnail-img bg-secondary hover-img-zoom">
+                                        
+                                        <a href="/client/full_details/{{data.pg_id}}"><img src="{% static '/images/' %}{{data.pg_image}}" alt="Image Not Found!"></a>
+                                        
+                                        <ul class="position-absolute quick-meta">
+                                            
+                                            <form action="/client/add_wishlist/" method="POST">
+                                                {% csrf_token %}
+                                                <input type="hidden" name="pg_id" value="{{data.pg_id}}">
+                                                <button type="submit" class="flaticon-like-1 flat-mini"  title="Add wishlist"></button></form>
+                                            
+                                        </ul>
+                                    </div>
+                                    <div class="property_text p-4">
+                                    
+                                                                               
+                                        <h4><a class="text-secondary" href="property-single-v1.html">{{data.pg_name}}</a></h4>
+                                        <span class="mb-4 d-block font-fifteen"><i class="fas fa-map-marker-alt text-primary"></i>{{data.pg_address}}</span>
+                                       
+                                        <div class="d-flex justify-content-between mt-4">
+                                            <div class="agent-meta">
+                                                <a href="#" class="d-flex text-general align-items-center"><img class="rounded-circle me-2" src="{% static 'assets/images/logo/ownerlogo1.png' %}" alt="avata"><span>{{data.owner_id.owner_first_name}}&nbsp;&nbsp;{{data.owner_id.owner_last_name}}</span></a>
+                                            </div>
+                                           
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        {% endfor %}
+                                                       
+                                <!-- Property Grid -->
+                                
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--============== Property Tab End ==============-->
+
+        <!--============== Property Location Start ==============-->
+        <div class="full-row">
+            <div class="container">
+                <div class="row">
+                    <div class="col">
+                        <div class="text-secondary text-center mb-5">
+                            <h2 class="text-secondary mx-auto mb-4">Find PG in These Area's</h2>
+                            
+                        </div>
+                    </div>
+                </div>
+                <div class="row g-4 location-style-1">
+                  
+                    
+                 {% for data in ar %}  
+                    <div class="col-md-3">
+                        <div class="entry-wrapper hover-img-zoom position-relative h-100">
+                            <div class="overflow-hidden transation thumbnail-img">
+                                <img src="{% static 'assets/images/ahm.jpg' %}" alt="real estate template">
+                            </div>
+                            <div class="d-flex position-absolute align-items-center bottom-0 p-4 w-100">
+                                <h5 class="mb-0"><a class="btn btn-white font-700 rounded-pill text-nowrap" href="/client/banner1/{{data.area_id}}">{{data.area_name}}</a></h5>
+                                <span class="d-table ms-4 fs-5 font-500 text-white">192 Listing</span>
+                            </div>
+                        </div>
+                    </div>
+                  {% endfor %} 
+                    
+                    
+                </div>
+            </div>
+        </div>
+       
+        {% endblock %}
+        <!--============== Register Section End ==============-->
+        

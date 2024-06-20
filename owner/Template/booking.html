@@ -1,0 +1,89 @@
+{% extends "owner_profile_header_footer.html" %}
+{% load static %}
+<!--============== Dashboard Start ==============-->
+{% block content %}
+<div class="full-row p-10 xs-p-0">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-12">
+        <h3 class="my-3">Booking Data</h3>
+      </div>
+      <div class="row">
+        <div class="header-unfix border-bottom bg-white">
+          <div class="p-30 bg-white border rounded mb-30 clearfix">
+            <table id="example" class="table table-bordered table-hover display nowrap margin-top-10">
+              <thead>
+                <tr>
+                  <th>Book Id</th>
+                  <th>User Name</th>
+                  <th>PG Rooms</th>
+                  <th>Book Date</th>
+                  <th>End Date</th>
+                  <th>Book Description</th>
+                  <th>Pack Name</th>
+                  <th>Booking Status</th>
+                  <th>Payment Status</th>
+                  <th>Accept/Reject</th>
+                  <th>Sending Mail</th>
+
+
+
+                </tr>
+              </thead>
+              <tbody>
+                {% for date in b %}
+                <tr>
+
+                  <td>{{date.book_id}}</td>
+                  <td>{{date.user_id.first_name}}</td>
+                  <td>{{date.pg_rooms_id.room_type_id.room_type_name}}</td>
+                  <td>{{date.book_date}}</td>
+                  <td>{{date.end_date}}</td>
+                  <td>{{date.book_desc}}</td>
+                  <td>{{date.pack_id.pack_price}}{{date.pack_id.pack_name}}</td>
+
+                  <td>
+                    {% if date.book_status == 0 %}
+                    Pending
+                    {% elif date.book_status == 1 %}
+                    Accepted
+                    {% else %}
+                    Rejected
+                    {% endif %}
+                  </td>
+                  <td>{% if date.payment_status == 0 %}
+                    Pending
+                    {% elif date.payment_status == 1 %}
+                    Success
+                    {% endif %}
+
+                  </td>
+                  <td>
+                    {% if date.book_status == 0 %}
+                    <a href="/owner/acceptedo/{{date.book_id}}">Accept</a>
+                    <a href="/owner/rejectedo/{{date.book_id}}">Reject</a>
+                    {% endif %}
+
+                  </td>
+
+                  <td> {% if date.end_date == d %}
+                    <a href="/owner/send_mail/{{date.book_id}}">Send Mail</a>
+                  </td>
+                  {% endif %}
+                </tr>
+                {% endfor %}
+
+              </tbody>
+
+
+            </table>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<!--============== Dashboard end ==============-->
+{% endblock %}

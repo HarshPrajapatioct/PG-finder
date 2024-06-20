@@ -1,0 +1,50 @@
+{% extends "c_header-footer.html" %}
+{% load static %}
+        <!--============== Signup Form Start ==============-->
+        {% block content %}
+        <div class="full-row" style="background-image: url('/static/assets/images/background/pg.jpg');  background-size: cover;">
+            <div class="container"><br><br>
+                <div class="row">
+                    <div class="col-xl-5 col-lg-6 mx-auto">
+                        <div class="bg-white xs-p-20 p-30 border rounded">
+                            <div class="form-icon-left rounded form-boder">
+                                <h4 class="mb-4">User Login</h4>
+                                <form action="/client/signin/" method="POST" data-parsley-validate="">
+                                    {% csrf_token %}
+
+                                    <div class="row row-cols-1 g-3">
+                                        <div class="col">
+                                            <label class="mb-2">Email Address</label>
+                                            <input type="email" class="form-control bg-light"  required="" name="email" value="{{c_email}}" data-parsley-required="true" data-parsley-required-message="This field is required" data-parsley-pattern="^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$" data-parsley-pattern-message="Please enter valid email id">
+                                        </div>
+                                        <div class="col">
+                                            <label class="mb-2">Password</label>
+                                            <input type="password" class="form-control bg-light" value="{{c_pass}}" required="" name="password" data-parsley-required="true" data-parsley-required-message="This field is required" data-parsley-pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,}" data-parsley-pattern-message="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters">
+                                        </div>
+                                        <div class="col">
+                                            <div class="custom-check-box-2">
+                                                <input class="d-none" type="checkbox" id="defaultCheck1" name="defaultCheck1">
+                                                <label for="defaultCheck1">Remember Me</label>
+                                            </div>
+                                        </div>
+                                        <div class="col">
+                                            <button type="submit" class="btn btn-primary mb-3">Login</button>
+                                       
+                                         </div>
+                                        {% for data in messages %}
+                                           <span style="color: red;">{{data}}</span>
+                                        {% endfor %}
+                                        <div class="col">
+                                            <a href="/client/forgot/" class="text-dark d-table py-1"><u>Forgot Password or Username</u></a>
+                                            <a href="/client/signup/" class="text-dark d-table py-1"><u>Don't have account? Register here.</u></a>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--============== Signup Form End ==============-->
+{% endblock %}

@@ -1,0 +1,94 @@
+
+{% extends "client_profile_header_footer.html" %}
+{% load static %}
+                    <!--============== Dashboard Start ==============-->
+                    {% block content %}
+                    <div class="full-row px-40 py-30 xs-p-0">
+                        <div class="container-fluid">
+                            <div class="row">
+                                <div class="col">
+                                    <h3 class="my-3">Edit Profile</h3>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col">
+                                    <div class="border rounded bg-white p-30 mb-30">
+                                        <div class="row">
+                                            <div class="col-xl-2">
+                                                <h4 class="mb-4 font-400">Profile Information</h4>
+                                            </div>
+                                            <div class="col-xl-10">
+                                                <form action="/client/edit_profiles/" class="form-boder" method="POST" data-parsley-validate="">
+                                                    {% csrf_token %}
+                                                    <div class="row">
+                                                        
+                                                        <div class="col-lg-6 mb-20">
+                                                            <label class="mb-2 font-fifteen font-500">First Name</label>
+                                                            <input class="form-control" name="first_name" placeholder="admin" type="text" value="{{ep.first_name}}" data-parsley-required="true" data-parsley-required-message="This field is required" data-parsley-pattern="^[a-zA-Z]+$" data-parsley-pattern-message="Please enter valid First name">
+                                                        </div>
+                                                        <div class="col-lg-6 mb-20">
+                                                            <label class="mb-2 font-fifteen font-500">Last Name</label>
+                                                            <input class="form-control" name="last_name" placeholder="Adams" type="text" value="{{ep.last_name}}" data-parsley-required="true" data-parsley-required-message="This field is required" data-parsley-pattern="^[a-zA-Z]+$" data-parsley-pattern-message="Please enter valid Last name">
+                                                        </div>
+                                                        <div class="col-lg-6 mb-20">
+                                                            <label class="mb-2 font-fifteen font-500">Contact</label>
+                                                            <input class="form-control" name="contact_no" placeholder="+1-908-941-6051" type="number" value="{{ep.contact_no}}" data-parsley-required-message="This field is required" data-parsley-pattern="^[0-9]+$" data-parsley-maxlength="13"data-parsley-minlength="10">
+                                                        </div>
+                                                        <div class="col-lg-6 mb-20">
+                                                            <label class="mb-2 font-fifteen font-500">Email</label>
+                                                            <input class="form-control" name="email_id" placeholder="admin@website.com" type="email" value="{{ep.email_id}}"  data-parsley-required="true" data-parsley-required-message="This field is required" data-parsley-pattern="^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$" data-parsley-pattern-message="Please enter valid email id">
+                                                        </div>
+                                                        <div class="col-lg-6 mb-20">
+                                                            <label class="mb-2 font-fifteen font-500">Password</label>
+                                                            <input class="form-control" name="password" placeholder="admin@website.com" type="password"  value="{{ep.password}}" data-parsley-required="true" data-parsley-required-message="This field is required" data-parsley-pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,}" data-parsley-pattern-message="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters">
+                                                        </div>
+                                                        <div class="col-lg-6 mb-20">
+                                                            <label class="mb-2 font-fifteen font-500">Address</label>
+                                                            <input class="form-control" name="address" placeholder="3170 Fairfax Drive New Brunswick, NJ 08901" type="text" value="{{ep.address}}" data-parsley-required="true" data-parsley-required-message="This field is required">
+                                                        </div>
+                                                        <div class="col-lg-6 mb-20">
+                                                            <!-- <label class="mb-2 font-fifteen font-500">Gender</label> -->
+                                                            <input class="form-control" name="gender" placeholder="3170 Fairfax Drive New Brunswick, NJ 08901" type="hidden" value="{{ep.gender}}">
+                                                        </div>
+                                                        <div class="col-lg-6 mb-20">
+                                                            <!-- <label class="mb-2 font-fifteen font-500">dat</label> -->
+                                                            <input class="form-control" name="date_of_birth" placeholder="admin@website.com" type="hidden"  value="1900-9-10">
+                                                        </div>
+                                                        <div class="col-lg-6 mb-20">
+                                                            <!-- <label class="mb-2 font-fifteen font-500">Password</label> -->
+                                                            <input class="form-control" name="is_admin" placeholder="admin@website.com" type="hidden"  value="0">
+                                                        </div>
+                                                        <div class="col-lg-6 mb-20">
+                                                            <!-- <label class="mb-2 font-fifteen font-500">Password</label> -->
+                                                            <input class="form-control" name="otp" placeholder="admin@website.com" type="hidden"  value="0">
+                                                        </div>
+                                                        <div class="col-lg-6 mb-20">
+                                                            <!-- <label class="mb-2 font-fifteen font-500">Password</label> -->
+                                                            <input class="form-control" name="otp_used" placeholder="admin@website.com" type="hidden"  value="0">
+                                                        </div>
+                                                        <div class="col-lg-6 mb-20">
+                                                            <!-- <label class="mb-2 font-fifteen font-500">Password</label> -->
+                                                            <input class="form-control" name="is_verify" placeholder="admin@website.com" type="hidden"  value="1">
+                                                        </div>
+                                                   
+                                                     
+                                                        
+                                                       
+                                                     
+                                                       
+                                                        <div class="col-12 mb-20">
+                                                            <button type="submit" class="btn btn-primary">Update Profile</button>
+                                                        </div>
+                                                    </div>
+                                                </form>
+                                     
+                                            </div>
+                                        </div>
+                                    </div>
+ 
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!--============== Dashboard End ==============-->
+{% endblock %}

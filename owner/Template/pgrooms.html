@@ -1,0 +1,56 @@
+
+{% extends "owner_profile_header_footer.html" %}
+{% load static %}
+                    <!--============== Dashboard Start ==============-->
+                    {% block content %}
+                    <div class="full-row p-10 xs-p-0">
+                        <div class="container-fluid">
+                            <div class="row">
+                                <div class="col-12">
+                                    <h3 class="my-3">PG Rooms Data</h3>
+                                </div>
+                                <div class="row">
+                                    <div class="header-unfix border-bottom bg-white">
+                                        <div class="p-30 bg-white border rounded mb-30 clearfix">
+                                    <table id="example" class="table table-bordered table-hover display nowrap margin-top-10">
+                                      <thead>
+                                        <tr>
+                                          <th>PG Rooms Id</th>
+                                          <th>PG Name</th>
+                                          <th>Room type</th>
+                                          <th>Number of Rooms</th>
+                                         
+                          
+                                        </tr>
+                                      </thead>
+                                      <tbody>
+                                        {% for date in pr %}
+                                        <tr>
+                          
+                                          <td>{{date.pg_rooms_id}}</td>
+                                          <td>{{date.pg_id.pg_name}}</td>
+                                          <td>{{date.room_type_id}}</td>
+                                          <td>{{date.num_of_rooms}}</td>
+                                         
+                                          
+                          
+                          
+                          
+                          
+                          
+                                        </tr>
+                                        {% endfor %}
+                          
+                                      </tbody>
+                          
+                          
+                                    </table>
+                                </div>
+                                    </div>
+                                  </div> 
+                            
+                            </div>
+                        </div>
+                    </div>
+                    <!--============== Dashboard end ==============-->
+{% endblock %}

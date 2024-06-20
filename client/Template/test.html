@@ -1,0 +1,9 @@
+{% load static %}
+
+{% for category in cat %}
+    <li> <a href="/client/banner/{{category.cate_id}}" class="dropdown-item">{{category.cate_name}}</a> </li>
+
+{% endfor %}
+
+
+

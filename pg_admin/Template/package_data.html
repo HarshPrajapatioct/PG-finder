@@ -1,0 +1,70 @@
+{% extends "header-footer.html" %}
+{% load static %}
+<!-- Main content -->
+{% block content %}
+<section class="content">
+  <div class="row">
+    <div class="col-xs-12">
+
+
+      <div class="box">
+        <div class="box-header">
+          <h3 class="box-title">Package Data</h3>
+          <h6 class="box-subtitle">Export data to Copy, CSV, Excel, PDF & Print</h6>
+          
+          <td><a href="/in_package/"><button type="submit" class="btn btn-primary">Insert</button></a></td>
+        </div>
+        <!-- /.box-header -->
+        <div class="box-body">
+          <table id="example" class="table table-bordered table-hover display nowrap margin-top-10">
+            <thead>
+              <tr>
+                <th>Package Id</th>
+                <th>Pg</th>
+                <th>Room Type</th>
+                <th>Package Name</th>
+                <th>Package Description</th>
+                <th>Package Price</th>
+                <th>Package Month</th>
+                <th>Delete Data</th>
+                <th>Update Data</th>
+                
+              </tr>
+            </thead>
+            <tbody>
+              {% for date in package %}
+              <tr>
+
+                <td>{{date.pack_id}}</td>
+                <td>{{date.pg_id.pg_name}}</td>
+                <td>{{date.room_type_id.room_type_name}}</td>
+                <td>{{date.pack_name}}</td>
+                <td>{{date.pack_desc}}</td>
+                <td>{{date.pack_price}}</td>
+                <td>{{date.pack_month}}</td>
+                <td><a href="/del_pack/{{date.pack_id}}"><img src="{% static 'images/del-logo.png' %}" class="user-image"  height="22" alt="User Image"></a></td>
+                <td><a href="/up_package/{{date.pack_id}}"><img src="{% static 'images/update.png' %}" class="user-image"  height="22" alt="User Image"></a></td>
+                
+
+              </tr>
+              {% endfor %}
+
+            </tbody>
+
+
+          </table>
+
+
+        </div>
+        <!-- /.box-body -->
+      </div>
+      <!-- /.box -->
+    </div>
+    <!-- /.col -->
+  </div>
+  <!-- /.row -->
+</section>
+<!-- /.content -->
+</div>
+<!-- /.content-wrapper -->
+{% endblock %}

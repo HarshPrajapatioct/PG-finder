@@ -1,0 +1,76 @@
+{% extends "header-footer.html" %}
+{% load static %}
+    <!-- Main content -->
+    {% block content %}
+    <section class="content">
+        <div class="row">
+          <div class="col-xs-12">
+
+           
+            <div class="box">
+              <div class="box-header">
+                <h3 class="box-title">Pg Details Data</h3>
+                <h6 class="box-subtitle">Export data to Copy, CSV, Excel, PDF & Print</h6>
+              
+                <td><a href="/in_pgdetails/"><button type="submit" class="btn btn-primary">Insert</button></a></td>
+              <!-- /.box-header -->
+              <div class="box-body">
+                <table id="example" class="table table-bordered table-hover display nowrap margin-top-10  ">
+                  <thead>
+                      <tr>
+                        <th>Pg Id</th>
+                        <th>Area Id</th>
+                        <th>Owner Id</th>
+                        <th>Category ID</th>
+                        <th>Pg name</th>
+                        <th>Pg Image</th>
+                        <th>Pg Address</th>
+                        <th>Pg E-mail</th>
+                        <th>Pg Contact</th>
+                        <th>Pg Description</th>
+                        <th>Delete Data</th>
+                        <th>Update Data</th>
+                        
+                      </tr>
+                  </thead>
+                  <tbody>
+                    {% for date in pg_details %}
+                      <tr>
+
+                        <td>{{date.pg_id}}</td>
+                        <td>{{date.area_id.area_name}}</td>
+                        <td>{{date.owner_id.owner_first_name}}</td>
+                        <td>{{date.cate_id.cate_name}}</td>
+                        <td>{{date.pg_name}}</td>
+                        <td><img src="{% static '/images/' %}{{date.pg_image}}" alt="" style="height: 100px; "></td>
+                        <td>{{date.pg_address}}</td>
+                        <td>{{date.pg_email}}</td>
+                        <td>{{date.pg_contact}}</td>
+                        <td>{{date.pg_desc}}</td>
+                        <td><a href="/del_pg_details/{{date.pg_id}}"><img src="{% static 'images/del-logo.png' %}" class="user-image"  height="22" alt="User Image"></a>
+                   </td>
+                        <td><a href="/up_details/{{date.pg_id}}"><img src="{% static 'images/update.png' %}" class="user-image"  height="22" alt="User Image"></a></td>
+                       
+                       
+                      </tr>
+                    {% endfor %}
+                     
+                  </tbody>
+                  
+             
+              </table>
+  
+                
+              </div>
+              <!-- /.box-body -->
+            </div>
+            <!-- /.box -->          
+          </div>
+          <!-- /.col -->
+        </div>
+        <!-- /.row -->
+      </section>
+      <!-- /.content -->
+    </div>
+    <!-- /.content-wrapper -->
+    {% endblock %}

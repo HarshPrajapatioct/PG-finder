@@ -1,0 +1,56 @@
+{% extends "header-footer.html" %}
+{% load static %}
+    <!-- Main content -->
+    {% block content %}
+    <section class="content">
+        <div class="row">
+          <div class="col-xs-12">
+
+           
+            <div class="box">
+              <div class="box-header">
+                <h3 class="box-title">Wishlist Data</h3>
+                <h6 class="box-subtitle">Export data to Copy, CSV, Excel, PDF & Print</h6>
+              </div>
+              <!-- /.box-header -->
+              <div class="box-body">
+                <table id="example" class="table table-bordered table-hover display nowrap margin-top-10">
+                  <thead>
+                      <tr>
+                        <th>Wishlist ID</th>
+                        <th>User </th>
+                        <th>PG </th>
+                     
+                      </tr>
+                  </thead>
+                  <tbody>
+                    {% for date in wishlist %}
+                      <tr>
+                        <td>{{date.wishlist_id}}</td>
+                        <td>{{date.user_id.first_name}}</td>
+                        <td>{{date.pg_id.pg_name}}</td>
+                       
+                       
+                       
+                      </tr>
+                      {% endfor %}
+                     
+                  </tbody>
+                  
+             
+              </table>
+  
+                
+              </div>
+              <!-- /.box-body -->
+            </div>
+            <!-- /.box -->          
+          </div>
+          <!-- /.col -->
+        </div>
+        <!-- /.row -->
+      </section>
+      <!-- /.content -->
+    </div>
+    <!-- /.content-wrapper -->
+    {% endblock %}

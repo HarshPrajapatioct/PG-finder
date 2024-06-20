@@ -1,0 +1,127 @@
+{% extends "client_profile_header_footer.html" %}
+{% load static %}
+{% load mathfilters %}
+
+<!--============== Dashboard Start ==============-->
+{% block content %}
+<div class="full-row px-40 py-30 xs-p-0">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col">
+                <h3 class="my-3">Booking</h3>
+            </div>
+            <a href="/client/index/"
+                style="display: flex; flex-direction: row;justify-content: flex-end; font-style:italic;"
+                onMouseOver="this.style.color='#00F'"
+                onMouseOut="this.style.color='#aa8453'">&#x2190;&nbsp;&nbsp;&nbsp;Go to the home page</a>
+        </div>
+        <div class="row">
+            <div class="col">
+                <div class="dashboard-panel border bg-white rounded overflow-hidden w-100">
+                    <div class="overflow-x-scroll font-fifteen">
+
+                        <table class="w-100 items-list bg-transparent">
+                            <thead>
+                                <tr class="bg-white">
+                                    <th>User ID</th>
+                                    <th>PG name</th>
+                                    <th>Package Name</th>
+                                    <th>Pack Price</th>
+                                    <th>Booking Date</th>
+                                    <th>Payment Status</th>
+                                    <td>Pay Now</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for data in cart %}
+                                <tr>
+                                    <td>
+                                        <img class="rounded"
+                                            src="{% static '/images/' %}{{data.pack_id.pg_id.pg_image}}" alt="">
+                                        <div class="property-info d-table">
+                                            <h5 class="text-secondary font-400">{{data.pack_id.pg_id.pg_name}}</h5>
+                                            <!-- <span><i class="fas fa-map-marker-alt text-primary font-13"></i>{{data.pack_id.pg_id.area_id.area_name}}</span> -->
+                                            <span><i
+                                                    class="fas fa-map-marker-alt text-primary font-13"></i>{{data.pack_id.pack_name}}</span>
+                                            <div class="price mt-2"> <span
+                                                    class="text-primary">&#8377;{{data.pack_id.pack_price}}</span>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td>{{data.pack_id.pg_id.pg_name}}</td>
+                                    <td>{{data.pack_id.pack_name}}</td>
+                                    <td>{{data.pack_id.pack_price}}</td>
+                                    <td>{{data.book_date}}</td>
+                                    <td>{% if data.payment_status == 0 %}
+                                        Pending
+                                        {% else %}
+                                        success
+                                        {% endif %}</td>
+                                    <td>
+                                        {% if data.payment_status == 0 and data.book_status == 1 %}
+
+                                        <!-- <div id="order1"> -->
+                                            <button class="btn_3" title="Place Order" type="submit">
+                                                <div id="order">
+                                                    <form class="text-center border border-light p-5"
+                                                        action="/client/place_booking_online/{{data.book_id}}" method="POST">
+                                                        {% csrf_token %}
+                                                        <input type="hidden" name="name" id="name" required
+                                                            class="form-control mb-4" placeholder="Name">
+                                                        <!-- RAZORPAY INTEGRATION HERE -->
+                                                        <script src="https://checkout.razorpay.com/v1/checkout.js"
+                                                            data-key="rzp_test_tAKRm19NFVu3OO"
+                                                            data-amount="{{data.pack_id.pack_price|mul:100}}"
+                                                            data-currency="INR" data-order_id="{{payment.id}}"
+                                                            data-buttontext="Pay with Razorpay"
+                                                            data-name="Newo Living Rent a PG"
+                                                            data-url_root="https://eneqd3r9zrjok.x.pipedream.net/"
+                                                            data-description="Newo Living Rent a PG"
+                                                            data-image="{% static 'pvr_img/Pvr_logo.png' %}"
+                                                            data-theme.color="#F37254">
+                                                            </script>
+                                                    </form>
+                                                </div>
+                                            </button>
+                                        <!-- </div> -->
+                                        {% endif %}
+                                        
+                                    </td>
+
+                                </tr>
+                                {% endfor %}
+
+
+
+
+
+
+
+                            </tbody>
+                        </table>
+                        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+
+                        <script type="text/javascript">
+                            $(function () {
+                                $("input[name='payment_status']").click(function () {
+                                    if ($("#pay").is(":checked")) {
+                                        $("#order").show();
+                                        $("#order1").hide();
+                                    }
+                                    else {
+                                        $("#order1").show();
+                                        $("#order").hide();
+                                    }
+                                });
+                            });
+                        </script>
+
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!--============== Dashboard End ==============-->
+{% endblock %}

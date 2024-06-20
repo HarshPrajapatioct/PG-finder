@@ -1,0 +1,113 @@
+{% extends "header-footer.html" %}
+{% load static %}
+
+
+<!-- Main content -->
+{% block content %}
+<section class="content">
+  <div class="row">
+    <div class="col-sm-10">
+
+      <script src="http://code.jquery.com/jquery-latest.js"></script>
+
+      <script type="text/javascript">
+        function fetch_data() {
+          var value = $("#pgdetails").val();
+          alert(value);
+          $.ajax({
+            url: "/order_report1/",
+            type: "POST",
+            data: { 'pgdetails': value },
+            success: function (data) {
+              alert(data);
+              $("#load_data").html(data);
+            }
+          });
+
+        } 
+      </script>
+
+      <select class="form-control" name="pgdetails" id="pgdetails" onchange="fetch_data()">
+        {% for data in sub %}
+        <option value="{{data.pg_id}}">{{data.pg_name}}</option>
+        {% endfor %}
+      </select>
+      <!-- <input class="form-control" name="pg_type_id" type="number" value="" id="example-search-input"> -->
+    </div>
+    <div class="col-xs-12">
+
+
+      <div class="box">
+        <div class="box-header">
+          <h3 class="box-title">Booking Report 1</h3>
+          <h6 class="box-subtitle">Export data to Copy, CSV, Excel, PDF & Print</h6>
+        </div>
+        <!-- /.box-header -->
+
+        <div class="box-body">
+
+          <table id="example" class="table table-bordered table-hover display nowrap margin-top-10">
+            <thead>
+              <tr>
+                <th>Booking Id</th>
+                <th>User</th>
+                <th>Booking Date</th>
+                <th>Booking description</th>
+                <th>Package</th>
+                <th>Payment Status </th>
+                <th>Booking Status </th>
+
+              </tr>
+            </thead>
+            <tbody id="load_data">
+              {% for date in booking %}
+              <tr>
+
+                <td>{{date.book_id}}</td>
+                <td>{{date.user_id_id}}</td>
+                <td>{{date.book_date}}</td>
+                <td>{{date.book_desc}}</td>
+                <td>{{date.pack_id_id}}</td>
+                <td>{% if date.payment_status == 0 %}
+                  Pending
+                 {% elif date.payment_status == 1 %}
+                 Cash Payment
+                 {% else %}
+                 Online Payment
+                 {% endif %}</td>
+                <td> {% if date.book_status == 0 %}
+                  Pending
+                {% elif date.book_status == 1 %}
+                  Accepted
+                {% else %}
+                  Rejected
+                {% endif %}</td>
+
+
+              </tr>
+              {% endfor %}
+
+            </tbody>
+
+
+          </table>
+
+
+        </div>
+        <!-- /.box-body -->
+      </div>
+      <!-- /.box -->
+    </div>
+    <!-- /.col -->
+  </div>
+  <!-- /.row -->
+</section>
+<!-- /.content -->
+</div>
+<!-- /.content-wrapper -->
+{% endblock %}
+<script lang="javascript" type="text/javascript">
+  function fetches() {
+    alert("Hello");
+  }
+</script>

@@ -1,0 +1,138 @@
+{% extends "header-footer.html" %}
+{% load static %}
+    <!-- Main content -->
+    {% block content %}
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/parsley.js/2.7.0/parsley.min.js"></script>
+    <section class="content">
+     
+     <!-- Basic Forms -->
+      <div class="box box-default">
+        <div class="box-header with-border">
+          <h3 class="box-title">Add PG Details</h3>
+
+          <div class="box-tools pull-right">
+            <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
+            <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-remove"></i></button>
+          </div> 
+        </div>
+        <!-- /.box-header -->
+        <div class="box-body">
+          <div class="row">
+            <div class="col-md-12">
+            	<div class="form-group clearfix">
+                <form method="POST" action="/in_pgdetails/" enctype="multipart/form-data" data-parsley-validate="">
+                  {% csrf_token %}
+
+             
+				  
+				<div class="form-group clearfix">
+				  <label for="example-search-input" class="col-sm-2 col-form-label">Area ID</label>
+				  <div class="col-sm-10">
+            <select class="form-control" name="area_id">
+              {% for data in ar %}
+                  <option value="{{data.area_id}}">{{data.area_name}}</option>
+              {% endfor %}
+          </select>
+					<!-- <input class="form-control" name="area_id" type="number" value="" id="example-search-input"> -->
+				  </div>
+				</div>
+				<div class="form-group clearfix">
+				  <label for="example-email-input" class="col-sm-2 col-form-label">Owner ID</label>
+				  <div class="col-sm-10">
+            <select class="form-control" name="owner_id">
+              {% for data in ow %}
+                  <option value="{{data.owner_id}}">{{data.owner_first_name}}</option>
+              {% endfor %}
+          </select>
+					<!-- <input class="form-control" name="owner_id" type="number" value="" id="example-search-input"> -->
+				  </div>
+				</div>
+        <div class="form-group clearfix">
+				  <label for="example-email-input" class="col-sm-2 col-form-label">Category ID</label>
+				  <div class="col-sm-10">
+            <select class="form-control" name="cate_id">
+              {% for data in ct %}
+                  <option value="{{data.cate_id}}">{{data.cate_name}}</option>
+              {% endfor %}
+          </select>
+					<!-- <input class="form-control" name="owner_id" type="number" value="" id="example-search-input"> -->
+				  </div>
+				</div>
+                <div class="form-group clearfix">
+                    <label for="example-search-input" class="col-sm-2 col-form-label">PG Name</label>
+                    <div class="col-sm-10">
+                      <input class="form-control" name="pg_name" type="text" value="" id="example-search-input"  data-parsley-required="true" data-parsley-required-message="This field is required">
+                    </div>
+                  </div>
+                  <div class="form-group clearfix">
+                    <label for="example-search-input" class="col-sm-2 col-form-label">PG Image</label>
+                    <div class="col-sm-10">
+                      <img src="" height="200" width="200" name="output" id="output" style="margin-left: 2px; border-radius: 5px,5px,5px,5px;"/><br><br>
+                      <input class="form-control" name="pg_image" type="file" value="" accept="image/*" onchange="loadFile(event)" id="example-search-input" data-parsley-required="true" data-parsley-required-message="This field is required" data-parsley-maxlength="40">
+                    </div>
+                  </div>
+                  <div class="form-group clearfix">
+                    <label for="example-search-input" class="col-sm-2 col-form-label">PG Address</label>
+                    <div class="col-sm-10">
+                      <input class="form-control" name="pg_address" type="text" value="" id="example-search-input" data-parsley-required="true" data-parsley-required-message="This field is required">
+                    </div>
+                  </div>
+                  <div class="form-group clearfix">
+                    <label for="example-email-input" class="col-sm-2 col-form-label">PG E-mail</label>
+                    <div class="col-sm-10">
+                      <input class="form-control" name="pg_email" type="email" value="" id="example-email-input" data-parsley-required="true" data-parsley-required-message="This field is required" data-parsley-pattern="^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$" data-parsley-pattern-message="Please enter valid email id">
+                    </div>
+                  </div>
+                  <div class="form-group clearfix">
+                    <label for="example-search-input" class="col-sm-2 col-form-label">PG Contect no.</label>
+                    <div class="col-sm-10">
+                      <input class="form-control" name="pg_contact" type="number" value="" id="example-search-input" data-parsley-required="true" data-parsley-required-message="This field is required" data-parsley-pattern="^[0-9]+$" data-parsley-maxlength="13" data-parsley-minlength="10">
+                    </div>
+                  </div>
+                  <div class="form-group clearfix">
+                    <label for="example-search-input" class="col-sm-2 col-form-label">PG Description</label>
+                    <div class="col-sm-10">
+                      <input class="form-control" name="pg_desc" type="text" value="" id="example-search-input" data-parsley-required="true" data-parsley-required-message="This field is required">
+                    </div>
+                  </div>
+                  <script>
+                    function loadFile(event){
+                      document.getElementById('output').src=
+                      URL.createObjectURL(event.target.files[0]);
+                    }
+                  </script>
+
+        <div class="box-footer">
+          <button type="submit" class="btn btn-primary">Submit</button>
+        </div>
+      </form>
+        
+
+			
+			
+        
+				
+			
+				
+				
+		
+            </div>
+            <!-- /.col -->
+          </div>
+          <!-- /.row -->
+        </div>
+        <!-- /.box-body -->
+      </div>
+      <!-- /.box -->
+     
+     
+      <!-- /.row -->
+      
+    </section>
+    <!-- /.content -->
+  </div>
+  <!-- /.content-wrapper -->
+    
+  {% endblock %}
+  

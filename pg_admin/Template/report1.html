@@ -1,0 +1,18 @@
+{% load static %}
+{% for da in booking1 %}
+<tr>
+  <td>{{da.book_id}}</td>
+  <td>{{da.user_id_id}}</td>
+  <td>{{da.book_date}}</td>
+  <td>{{da.book_desc}}</td>
+  <td>{{da.pack_id_id}}</td>
+  <td>{{da.payment_status}}</td>
+  <td> {% if date.book_status == 0 %}
+    Pending
+  {% elif date.book_status == 1 %}
+    Accepted
+  {% else %}
+    Rejected
+  {% endif %}</td>
+</tr>
+{% endfor %}

@@ -1,0 +1,61 @@
+{% extends "header-footer.html" %}
+{% load static %}
+    <!-- Main content -->
+    {% block content %}
+    <section class="content">
+        <div class="row">
+          <div class="col-xs-12">
+
+           
+            <div class="box">
+              <div class="box-header">
+                <h3 class="box-title">Pg Facility Data</h3>
+                <h6 class="box-subtitle">Export data to Copy, CSV, Excel, PDF & Print</h6>
+                <a href="/in_pf/"><button type="submit" class="btn btn-primary">Insert</button></a>
+              </div>
+              <!-- /.box-header -->
+              <div class="box-body">
+                <table id="example" class="table table-bordered table-hover display nowrap margin-top-10">
+                  <thead>
+                      <tr>
+                        <th>Pg Facility Id</th>
+                        <th>Facility Id</th>
+                        <th>Pg Id</th>
+                        <th>Delete Data</th> 
+                        <th>Update Date</th>
+                      
+
+                      </tr>
+                  </thead>
+                  <tbody>
+                    {% for date in pg_facility %}
+                      <tr>
+
+                        <td>{{date.pg_facility_id}}</td>
+                        <td>{{date.faci_id.faci_name}}</td>
+                        <td>{{date.pg_id.pg_name}}</td>
+                        <td><a href="/del_pf/{{date.pg_facility_id}}"><img src="{% static 'images/del-logo.png' %}" class="user-image"  height="22" alt="User Image"></a></td>
+                        <td><a href="/up_pf/{{date.pg_facility_id}}"><img src="{% static 'images/update.png' %}" class="user-image"  height="22" alt="User Image"></a></td>
+                       
+                      </tr>
+                      {% endfor %}
+                     
+                  </tbody>
+                  
+             
+              </table>
+  
+                
+              </div>
+              <!-- /.box-body -->
+            </div>
+            <!-- /.box -->          
+          </div>
+          <!-- /.col -->
+        </div>
+        <!-- /.row -->
+      </section>
+      <!-- /.content -->
+    </div>
+    <!-- /.content-wrapper -->
+    {% endblock %}

@@ -1,0 +1,56 @@
+{% extends "client_profile_header_footer.html" %}
+{% load static %}
+                    <!--============== Dashboard Start ==============-->
+                    {% block content %}
+                    <div class="full-row px-40 py-30 xs-p-0">
+                        <div class="container-fluid">
+                            <div class="row">
+                                <div class="col">
+                                    <h3 class="my-3">My Wishlist</h3>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col">
+                                    <div class="dashboard-panel border bg-white rounded overflow-hidden w-100">
+                                        <div class="overflow-x-scroll font-fifteen">
+                                            <table class="w-100 items-list bg-transparent">
+                                                <thead>
+                                                    <tr class="bg-white">
+                                                        <th>Pg's</th>
+                                                        <th>Added Date</th>
+                                                        
+                                                        <th>Remove from wishlist</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    {% for data in wishlist %}
+                                                    <tr>
+                                                        <td>
+                                                            <img class="rounded" src="{% static '/images/' %}{{data.pg_id.pg_image}}" alt="">
+                                                            <div class="property-info d-table">
+                                                                <h5 class="text-secondary font-400">{{data.pg_id.pg_name}}</h5>
+                                                                <span><i class="fas fa-map-marker-alt text-primary font-13"></i> {{data.pg_id.area_id.area_name}}</span>
+                                                                
+                                                            </div>
+                                                        </td>
+                                                        <td>10 Jan, 2019</td>
+                                                      
+                                                        <td>
+                                                            <!-- <a href="#" class="text-primary me-4 mb-1"><i class="fas fa-edit"></i></a> -->
+                                                            <a href="/client/del_wishlist/{{data.wishlist_id}}"><img src="{% static 'images/del-logo.png' %}" class="user-image"  height="40" width="10px" alt="User Image"></a>
+                                                        </td>
+                                                    </tr>
+                                                    {% endfor %}
+                                                  
+                                               
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                        
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!--============== Dashboard End ==============-->
+                    {% endblock %}

@@ -1,0 +1,143 @@
+{% extends "c_header-footer.html" %}
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+
+<script src="http://code.jquery.com/jquery-latest.js"></script>
+<script type="text/javascript">
+    $(function () {
+        $("#search1").autocomplete({
+            source: "{% url 'pro_search'  %}"
+
+        });
+    });
+
+</script>
+
+
+{% load static %}
+
+<!--============== Page Banner Start ==============-->
+{% block content %}
+<div class="page-banner-simple bg-secondary overlay-secondary"
+    style="background-image: url('/static/assets/images/background/bg-1.png'); background-size: 100%; background-position: center center; background-repeat: no-repeat; ;">
+    <div class="container">
+        <div class="row justify-content-md-center" style="padding-top: 100px; padding-bottom: 130px;">
+            <div class="col-lg-10 position-relative z-index-9"><br><br>
+                <h2 class="text-center mx-auto mb-3 text-white">Search what you are looking for...</h2>
+                <span class="d-table mx-auto text-white font-medium mb-4">We have listed over {{pgc}}+ PG in our
+                    database</span>
+                <form action="/client/search_product/" class="banner-search-form bg-white p-4" method="GET">
+
+                    <div class="row">
+                        <div class="col-lg-9">
+                            <input type="text" id="search1" name="pg_name" class="form-control"
+                                placeholder="Enter Keyword...">
+                        </div>
+                        <div class="col-lg-3">
+                            <button class="btn btn-primary w-100">Search</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<!--============== Page Banner End ==============-->
+
+<!--============== Property Grid View Start ==============-->
+<div class="full-row">
+    <div class="container">
+        <div class="row">
+            <div class="col">
+                <div class="woo-filter-bar p-3 d-flex flex-wrap justify-content-between">
+                    <div class="d-flex flex-wrap">
+
+                        <form class="woocommerce-ordering" method="get">
+                            <script src="http://code.jquery.com/jquery-latest.js"></script>
+                            <script type="text/javascript">
+                                $(document).ready(function () {
+                                    $("#orderby").change(function () {
+                                        var val = $(this).val();
+                                        alert(val);
+                                        $.ajax({
+                                            url: "/client/sort/",
+                                            data: { 'sort': val },
+                                            success: function (data) {
+                                                //alert(data);
+                                                $("#package").html(data);
+                                            }
+                                        });
+                                    });
+                                });
+                            </script>
+                            <select name="orderby" id="orderby">
+
+                                <option selected value="1">Sort By Price :- 0 To 10,000</option>
+                                <option value="2">Sort By Price :- 10,000 To 30,000</option>
+                                <option value="3">Sort By Price :- 30,000 To 50,000</option>
+                                <option value="4">Sort By Price :- 50,000 To 60,000</option>
+
+                            </select>
+                             <!-- <select name="orderby2">
+                                {% for data in faci %}
+                                <option value="{{data.faci_id}}">{{data.faci_name}}</option>
+                                {% endfor %}
+                            </select>  -->
+                        </form>
+                    </div>
+                    <div class="d-flex">
+
+                        <span class="woocommerce-ordering-pages me-4 font-fifteen">Showing at {{pgc}} result</span>
+
+                       
+                    </div> 
+                </div>
+            </div>
+        </div>
+        <div class="row row-cols-lg-3 row-cols-md-2 row-cols-1 g-4" id="package">
+
+            {% for data in pgdetails %}
+                
+            <div class="col">
+                <!-- Property Grid -->
+                <div class="property-grid-1 property-block bg-white transation-this hover-shadow">
+                    <div class="overflow-hidden position-relative transation thumbnail-img bg-secondary hover-img-zoom">
+                        
+                        <a href="/client/full_details/{{data.pg_id}}"><img
+                                src="{% static '/images/' %}{{data.pg_image}}" alt="Image Not Found!"></a>
+                        
+                        <ul class="position-absolute quick-meta">
+                           
+                           
+                                <form action="/client/add_wishlist/" method="POST">
+                                    {% csrf_token %}
+                                    <input type="hidden" name="pg_id" value="{{data.pg_id}}">
+                                    <button type="submit"  class="flaticon-like-1 flat-mini" title="Add Favourite">
+                                            </button>
+                            
+                            </form>
+                            
+                        </ul>
+                    </div>
+                    <div class="property_text p-4">
+                        
+                        <h5 class="listing-title"><a href="/client/full_details/{{data.pg_id}}">{{data.pg_name}}</a>
+                        </h5>
+                        <span class="listing-location"><i class="fas fa-map-marker-alt"></i>{{data.pg_address}}</span>
+                       
+                    </div>
+                    <div class="d-flex align-items-center post-meta mt-2 py-3 px-4 border-top">
+                        <div class="agent">
+                            <a href="#" class="d-flex text-general align-items-center"><img class="rounded-circle me-2"
+                                    src="{% static 'assets/images/logo/ownerlogo1.png' %}"
+                                    alt="avata"><span>{{data.owner_id.owner_first_name}}</span></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+            
+
+
+        </div>
+    </div><br><br><br>
+    {% endblock %}
