@@ -68,9 +68,9 @@
                                                         {% csrf_token %}
                                                         <input type="hidden" name="name" id="name" required
                                                             class="form-control mb-4" placeholder="Name">
-                                                        <!-- RAZORPAY INTEGRATION HERE -->
+                                                        <!-- RAZORPAY INTEGRATION HERE and in the data key add your razorpay integration key -->
                                                         <script src="https://checkout.razorpay.com/v1/checkout.js"
-                                                            data-key="rzp_test_tAKRm19NFVu3OO"
+                                                            data-key="" 
                                                             data-amount="{{data.pack_id.pack_price|mul:100}}"
                                                             data-currency="INR" data-order_id="{{payment.id}}"
                                                             data-buttontext="Pay with Razorpay"
